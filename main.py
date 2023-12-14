@@ -1,4 +1,6 @@
+import tkinter as tk
 import ttkbootstrap as tb
+from ttkbootstrap.scrolled import ScrolledFrame
 from ttkbootstrap.constants import *
 from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.item import ItemShow
@@ -22,8 +24,11 @@ fr_lower.pack(fill='x', anchor='nw',expand=False)
 fr_left_toolbar = tb.Frame(master=fr_lower, padding=sml_padding)
 fr_left_toolbar.pack(side='left', anchor='nw', fill='y', expand=False)
 
-fr_info_items = tb.Frame(master=fr_lower, padding=sml_padding, bootstyle='secondary')
-fr_info_items.pack(fill='x', expand=True, side='left', anchor='nw')
+#todo: este canvas necesita un scroll vertical
+# sf_info_items = tb.Canvas(master=fr_lower, yscrollcommand=scroll_cv_items.set)
+sf_info_items = ScrolledFrame(master=fr_lower,autohide=True, height=580)
+sf_info_items.pack(fill='both',expand=True, padx=10, pady=10)
+
 
 #frame statusbar
 fr_statusbar = tb.Frame(master=root, relief='sunken',padding=sml_padding)
@@ -36,9 +41,13 @@ Toolbar(fr_left_toolbar)
 
 
 #Insercion item desde itemslist
-ItemShow(fr_info_items, items[0])
-ItemShow(fr_info_items, items[1])
-ItemShow(fr_info_items, items[2])
+ItemShow(sf_info_items, items[0])
+ItemShow(sf_info_items, items[1])
+ItemShow(sf_info_items, items[2])
+ItemShow(sf_info_items, items[1])
+ItemShow(sf_info_items, items[2])
+ItemShow(sf_info_items, items[1])
+ItemShow(sf_info_items, items[2])
 status_lbl = tb.Label(master=fr_statusbar, text='this is a test for the status bar')
 status_lbl.pack(anchor='e')
 
