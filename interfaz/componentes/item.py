@@ -1,3 +1,5 @@
+from tkinter import *
+from PIL import ImageTk, Image
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.editbar import EditBar
@@ -8,9 +10,10 @@ data_arr ejemplo de estructura:
     "nombre": "leds",                                           x
     "modelo": "LED-567",                                        x
     "cantidad": 30,                                             x
-    "cantidadAviso": 5,
-    "cantidadMaxima": 100,
-    "datasheet": "www.dsheet.com/56789/data.php",
+    "cantidadAviso": 5,                                         
+    "cantidadMaxima": 100,                                      x
+    "datasheet": "www.dsheet.com/56789/data.php",               x
+    "imagen": "https://.....jpg",                               x
     "notas": "leds de varios colores",                          x
     "fechaInsercion": "8 abril 2021",                           x
     "localizacion": 23                                          x
@@ -32,7 +35,6 @@ class ItemShow:
         contents_frame = tb.LabelFrame(master=item_frame, text='Contenidos', bootstyle='default')
         contents_frame.pack(side='left', fill='both', expand=True)
 
-
         # INFO FRAME⬇️
         lbl_boxNum = tb.Label(master=num_frame, text=data_dict['localizacion'], font=("Arial", 24, "bold"), padding=md_padd)
         lbl_boxNum.pack(side='left')
@@ -40,16 +42,19 @@ class ItemShow:
         lbl_name = tb.Label(master=contents_frame, text=data_dict['nombre'], font=("Arial", 12, "bold"), padding=md_padd)
         lbl_name.grid(column=0, row=0)
         
-        lbl_model = tb.Label(master=contents_frame, text=data_dict['modelo'], font=("Arial", 12, "bold"), padding=md_padd)
+        lbl_model = tb.Label(master=contents_frame, text=data_dict['modelo'], font=("Arial", 10, "normal"), padding=md_padd)
         lbl_model.grid(column=1, row=0)
         
         
-        lbl_notes = tb.Label(master=contents_frame, text=data_dict['notas'], font=("Arial", 12, "bold"), padding=md_padd)
+        lbl_notes = tb.Label(master=contents_frame, text=data_dict['notas'], font=("Arial", 10, "normal"), padding=md_padd)
         lbl_notes.grid(column=0, row=1,columnspan=3, sticky='w')
         
         
         additional_frame = tb.Frame(master=item_frame_lower,bootstyle='default')
         additional_frame.pack(side="top", fill='both', expand=True)
+        
+        #IMG FRAME
+        
         #CONTROL FRAME⬇️
         if data_dict['datasheet'] != '':
             btn_dsheet = tb.Button(master=additional_frame, text=data_dict['datasheet'], bootstyle='success')

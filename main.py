@@ -2,7 +2,6 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.item import ItemShow
-from interfaz.componentes.spacer import Spacer
 from interfaz.componentes.toolbar import Toolbar
 from data.itemlists import items
 
@@ -43,7 +42,7 @@ ItemShow(fr_info_items, items[2])
 status_lbl = tb.Label(master=fr_statusbar, text='this is a test for the status bar')
 status_lbl.pack(anchor='e')
 
-
+root.update()
 root.mainloop()
 
 
