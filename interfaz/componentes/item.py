@@ -4,6 +4,7 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.editbar import EditBar
 
+
 """
 data_arr ejemplo de estructura:
 {

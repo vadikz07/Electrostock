@@ -5,6 +5,9 @@ from ttkbootstrap.constants import *
 from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.item import ItemShow
 from interfaz.componentes.toolbar import Toolbar
+
+
+
 from data.itemlists import items
 
 root = tb.Window(themename='superhero')
@@ -24,8 +27,6 @@ fr_lower.pack(fill='x', anchor='nw',expand=False)
 fr_left_toolbar = tb.Frame(master=fr_lower, padding=sml_padding)
 fr_left_toolbar.pack(side='left', anchor='nw', fill='y', expand=False)
 
-#todo: este canvas necesita un scroll vertical
-# sf_info_items = tb.Canvas(master=fr_lower, yscrollcommand=scroll_cv_items.set)
 sf_info_items = ScrolledFrame(master=fr_lower,autohide=True, height=580)
 sf_info_items.pack(fill='both',expand=True, padx=10, pady=10)
 
