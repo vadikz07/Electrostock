@@ -42,6 +42,7 @@ Toolbar(fr_left_toolbar)
 
 
 #Insercion item desde itemslist
+
 ItemShow(sf_info_items, items[0])
 ItemShow(sf_info_items, items[1])
 ItemShow(sf_info_items, items[2])
