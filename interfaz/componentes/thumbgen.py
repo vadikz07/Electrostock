@@ -19,6 +19,7 @@ class ThumbGen():
         cajon_num_lbl_frame.pack(side='top', **self.common_options)
         
         self.cajon_num_var = IntVar()
+        self.cajon_num_var.set(1)
         cajon_num_ent = tb.Entry(master=cajon_num_lbl_frame, textvariable=self.cajon_num_var, width=5)
         cajon_num_ent.pack(side='top', **self.common_options)
         
@@ -41,9 +42,11 @@ class ThumbGen():
         
         self.imagen_filename_var = StringVar()
         self.imagen_filename_var.set("Sin imagen")
+        self.imagen_filename_real_var = StringVar()
+        self.imagen_filename_real_var.set("Sin imagen")
         imagen_filename_lbl = tb.Label(master=imagen_lbl_frame, textvariable=self.imagen_filename_var)
         imagen_filename_lbl.pack(side='top', **self.common_options)
-        imagen_select_btn = tb.Button(master=imagen_lbl_frame, text='Selecciona una imagen', command=lambda: self.pick_file(imagen_filename_var))        
+        imagen_select_btn = tb.Button(master=imagen_lbl_frame, text='Selecciona una imagen', command=lambda: self.pick_file(self.imagen_filename_var))        
         imagen_select_btn.pack(side='top', **self.common_options)
         
         control_lbl_frame = tb.LabelFrame(master=mainFrame, text='Acciones')
@@ -59,6 +62,7 @@ class ThumbGen():
     def pick_file(self, varToChange):
         filepicker = filedialog.askopenfilename(initialdir='./', title='Selecciona una imagen', filetypes=(('png files','*.png'),('all files', '*.*')))
         varToChange.set(self.trim_string(filepicker))
+        self.imagen_filename_real_var.set(filepicker)
         
     def is_all_input_valid(self):
         num_ok = type(self.cajon_num_var.get()) == int and 1 <= self.cajon_num_var.get() <= 99
@@ -74,4 +78,5 @@ class ThumbGen():
             print('Error en inputs, no cumplen los requisitos.')
             return
         else:
-            print('Generando imagen')
+            DrawThumb(self.cajon_num_var.get(), self.cajon_nombre_var.get(), self.cajon_modelo_var.get(),self.imagen_filename_real_var.get())
+            
