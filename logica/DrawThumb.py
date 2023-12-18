@@ -15,8 +15,9 @@ class DrawThumb:
         width, height = 400, 200
         image = Image.new("RGB", (width, height), "white") #base
         drawing = ImageDraw.Draw(image)
-        font = ImageFont.load_default()
-        drawing.text((10, 10), f"Nombre: {self.name}", fill="black", font=font)
+        font_bold = ImageFont.truetype('arialbd.ttf', size=20)
+        font = ImageFont.truetype('arial.ttf',size=14)
+        drawing.text((10, 10), f"Nombre: {self.name}", fill="black", font=font_bold)
         drawing.text((10, 40), f"Modelo: {self.model}", fill="black", font=font)
         if self.imgpath != 'Sin imagen':
             img_component = Image.open(self.imgpath)
