@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import filedialog
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
+from logica.DrawThumb import DrawThumb
 
 class ThumbGen():
     common_options = {'fill':'x', 'expand':True, 'anchor':'center', 'pady':4}
