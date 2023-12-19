@@ -10,7 +10,9 @@ from data.itemlists import items
 
 root = tb.Window(themename='superhero')
 root.title('Electrostock')
-root.geometry('950x700')
+wid = 950
+hei = 1000
+root.geometry(f'{wid}x{hei}')
 
 #sizing variables
 sml_padding = 10;
@@ -25,7 +27,7 @@ fr_lower.pack(fill='x', anchor='nw',expand=False)
 fr_left_toolbar = tb.Frame(master=fr_lower, padding=sml_padding)
 fr_left_toolbar.pack(side='left', anchor='nw', fill='y', expand=False)
 
-sf_info_items = ScrolledFrame(master=fr_lower,autohide=True, height=580)
+sf_info_items = ScrolledFrame(master=fr_lower,autohide=True, height=hei-120)
 sf_info_items.pack(fill='both',expand=True, padx=10, pady=10, anchor='nw')
 
 
