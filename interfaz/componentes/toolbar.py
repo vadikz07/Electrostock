@@ -26,7 +26,7 @@ class Toolbar:
         btn_genThumb = tb.Button(master=container, text='Generar etiqueta', bootstyle='info', command=lambda: ThumbGen(par))
         btn_genThumb.pack(**common_settings)
         #DEBUG
-        # ThumbGen(par)
+        ThumbGen(par)
         
         #boton para abrir nueva ventana con formulario de insercion
         btn_addNew = tb.Button(master=container, text='Añadir objeto', bootstyle='success', command=lambda: NewItemForm(par))

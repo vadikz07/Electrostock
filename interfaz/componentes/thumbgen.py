@@ -79,7 +79,10 @@ class ThumbGen():
         num_ok = type(self.cajon_num_var.get()) == int and 1 <= self.cajon_num_var.get() <= 99
         name_ok = 3 <= len(self.cajon_nombre_var.get()) <= 15
         model_ok = 3 <= len(self.cajon_modelo_var.get()) <= 20
-        maker_ok = 3 <= len(self.fabricante_var.get()) <= 20
+        if self.fabricante_var.get() != '':
+            maker_ok = 3 <= len(self.fabricante_var.get()) <= 20
+        else:
+            maker_ok = True
         if num_ok and name_ok and model_ok and maker_ok:
             return True
         else:

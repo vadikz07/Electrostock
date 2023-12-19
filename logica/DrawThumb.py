@@ -27,6 +27,7 @@ class DrawThumb:
         drawing.text((10, 10), f"{self.name}", fill="black", font=font_bold)
         drawing.text((10, 80), f"{self.model}", fill="black", font=font)
         if self.maker != "":
+            drawing.text((250,210), 'Fabricante:', fill="grey", font=font)
             drawing.text((250,250), f"{self.maker.upper()}",fill="black", font=font_italic)
         
         if self.imgpath != 'Sin imagen': # RUTA A IMAGEN ENCONTRADA
