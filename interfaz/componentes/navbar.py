@@ -1,7 +1,7 @@
 from tkinter import StringVar
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
-from logica.logic import show_empty_containers
+from logica.showEmptyContainers import show_empty_containers
 
 
 class NavBarTop:
