@@ -36,6 +36,14 @@ class ThumbGen():
         self.cajon_modelo_var = StringVar()
         cajon_modelo_ent = tb.Entry(master=cajon_modelo_lbl_frame, textvariable=self.cajon_modelo_var)
         cajon_modelo_ent.pack(side='top', **self.common_options)
+
+        # Añadido para el fabricante
+        fabricante_lbl_frame = tb.LabelFrame(master=mainFrame, text='Fabricante (Max 20 car.)')
+        fabricante_lbl_frame.pack(side='top', **self.common_options)
+        
+        self.fabricante_var = StringVar()
+        fabricante_ent = tb.Entry(master=fabricante_lbl_frame, textvariable=self.fabricante_var)
+        fabricante_ent.pack(side='top', **self.common_options)
         
         imagen_lbl_frame = tb.LabelFrame(master=mainFrame, text='Imagen (PNG/JPG)')
         imagen_lbl_frame.pack(side='top', **self.common_options)
@@ -71,7 +79,8 @@ class ThumbGen():
         num_ok = type(self.cajon_num_var.get()) == int and 1 <= self.cajon_num_var.get() <= 99
         name_ok = 3 <= len(self.cajon_nombre_var.get()) <= 15
         model_ok = 3 <= len(self.cajon_modelo_var.get()) <= 20
-        if num_ok and name_ok and model_ok:
+        maker_ok = 3 <= len(self.fabricante_var.get()) <= 20
+        if num_ok and name_ok and model_ok and maker_ok:
             return True
         else:
             return False
@@ -81,5 +90,5 @@ class ThumbGen():
             print('Error en inputs, no cumplen los requisitos.')
             return
         else:
-            DrawThumb(self.cajon_num_var.get(), self.cajon_nombre_var.get(), self.cajon_modelo_var.get(),self.imagen_filename_real_var.get())
+            DrawThumb(self.cajon_num_var.get(), self.cajon_nombre_var.get(), self.cajon_modelo_var.get(), self.fabricante_var.get(), self.imagen_filename_real_var.get())
             

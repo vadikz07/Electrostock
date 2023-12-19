@@ -2,6 +2,7 @@ items = [
     {
     "nombre": "leds",
     "modelo": "LED-567",
+    "fabricante": "L100TEX",
     "cantidad": 30,
     "cantidadAviso": 5,
     "cantidadMaxima": 100,
@@ -14,6 +15,7 @@ items = [
   {
     "nombre": "condensadores",
     "modelo": "C-456",
+    "fabricante": "CAPTOCYN",
     "cantidad": 80,
     "cantidadAviso": 15,
     "cantidadMaxima": 200,
@@ -26,6 +28,7 @@ items = [
   {
     "nombre": "sensores de temperatura",
     "modelo": "TMP-789",
+    "fabricante": "SENSUTA",
     "cantidad": 15,
     "cantidadAviso": 3,
     "cantidadMaxima": 50,
@@ -38,6 +41,7 @@ items = [
   {
     "nombre": "transistores",
     "modelo": "NPN-789",
+    "fabricante": "EJEX",
     "cantidad": 50,
     "cantidadAviso": 10,
     "cantidadMaxima": 100,

@@ -46,6 +46,9 @@ class ItemShow:
         lbl_model = tb.Label(master=contents_frame, text=data_dict['modelo'], font=("Arial", 10, "normal"), padding=md_padd)
         lbl_model.grid(column=1, row=0)
         
+        lbl_fabricante = tb.Label(master=contents_frame, text=data_dict['fabricante'], font=("Arial", 10, "italic"), padding=md_padd)
+        lbl_fabricante.grid(column=2, row=0, sticky='e')
+        
         
         lbl_notes = tb.Label(master=contents_frame, text=data_dict['notas'], font=("Arial", 10, "normal"), padding=md_padd)
         lbl_notes.grid(column=0, row=1,columnspan=3, sticky='w')
