@@ -1,6 +1,8 @@
 from tkinter import StringVar
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
+from logica.logic import show_empty_containers
+
 
 class NavBarTop:
     def __init__(self, par) -> None:
@@ -10,8 +12,11 @@ class NavBarTop:
         navbar_frame = tb.Frame(master=par, bootstyle='dark')
         navbar_frame.pack(anchor='ne', fill='both', expand=True)
 
-        btn_showEmpty = tb.Button(master=navbar_frame, text='Mostrar vacios')
+        btn_showEmpty = tb.Button(master=navbar_frame, text='Mostrar vacios', command=lambda: show_empty_containers(par))
         btn_showEmpty.pack(**common_left)
+        #todo: invocar funcion para comprobar cajones vacios
+        
+        
         
         btn_refreshList = tb.Button(master=navbar_frame, text='Reiniciar lista')
         btn_refreshList.pack(**common_left)

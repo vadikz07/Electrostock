@@ -37,19 +37,16 @@ fr_statusbar.pack(fill='x', side='bottom', anchor='s')
 
 # Widgets del navbar
 NavBarTop(fr_navbar)
-
 Toolbar(fr_left_toolbar)
 
 
-#Insercion item desde itemslist
+#Insercion item desde itemslist al arrancar el programa
+for data_item in items:
+    ItemShow(sf_info_items, data_item, isEmpty=False)
+ItemShow(sf_info_items, data_item, isEmpty=True)
 
-ItemShow(sf_info_items, items[0])
-ItemShow(sf_info_items, items[1])
-ItemShow(sf_info_items, items[2])
-ItemShow(sf_info_items, items[1])
-ItemShow(sf_info_items, items[2])
-ItemShow(sf_info_items, items[1])
-ItemShow(sf_info_items, items[2])
+
+
 status_lbl = tb.Label(master=fr_statusbar, text='this is a test for the status bar')
 status_lbl.pack(anchor='e')
 

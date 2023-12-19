@@ -3,6 +3,7 @@ from PIL import ImageTk, Image
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.editbar import EditBar
+from logica.getContainerSize import get_container_size
 
 
 """
@@ -24,7 +25,8 @@ data_arr ejemplo de estructura:
 md_padd = 10
 
 class ItemShow:
-    def __init__(self, par, data_dict) -> None:
+    def __init__(self, par, data_dict, isEmpty=False) -> None:
+        self.isEmpty = isEmpty
         item_frame = tb.Frame(master=par, bootstyle='dark', border=10)
         item_frame.pack(side='top', fill='x', expand=True)
         item_frame_lower = tb.Frame(master=par, bootstyle='light')
@@ -37,22 +39,34 @@ class ItemShow:
         contents_frame.pack(side='left', fill='both', expand=True)
 
         # INFO FRAME⬇️
-        lbl_boxNum = tb.Label(master=num_frame, text=data_dict['localizacion'], font=("Arial", 24, "bold"), padding=md_padd)
+        if not self.isEmpty:    #si no esta vacio, generar contenido para infoframe
+            var_box_num = data_dict['localizacion']
+            var_name = data_dict['nombre']
+            var_model = data_dict['modelo']
+            var_fabricante = data_dict['fabricante']
+            var_notas = data_dict['notas']
+        else:
+            var_box_num = 99
+            var_name = "VACIO"
+            var_model = ""
+            var_fabricante = ""
+            var_notas = get_container_size(var_box_num)
+            
+            
+        lbl_boxNum = tb.Label(master=num_frame, text=var_box_num, font=("Arial", 24, "bold"), padding=md_padd)
         lbl_boxNum.pack(side='left')
         
-        lbl_name = tb.Label(master=contents_frame, text=data_dict['nombre'], font=("Arial", 12, "bold"), padding=md_padd)
+        lbl_name = tb.Label(master=contents_frame, text=var_name, font=("Arial", 12, "bold"), padding=md_padd)
         lbl_name.grid(column=0, row=0)
         
-        lbl_model = tb.Label(master=contents_frame, text=data_dict['modelo'], font=("Arial", 10, "normal"), padding=md_padd)
+        lbl_model = tb.Label(master=contents_frame, text=var_model, font=("Arial", 10, "normal"), padding=md_padd)
         lbl_model.grid(column=1, row=0)
         
-        lbl_fabricante = tb.Label(master=contents_frame, text=data_dict['fabricante'], font=("Arial", 10, "italic"), padding=md_padd)
+        lbl_fabricante = tb.Label(master=contents_frame, text=var_fabricante, font=("Arial", 10, "italic"), padding=md_padd)
         lbl_fabricante.grid(column=2, row=0, sticky='e')
         
-        
-        lbl_notes = tb.Label(master=contents_frame, text=data_dict['notas'], font=("Arial", 10, "normal"), padding=md_padd)
+        lbl_notes = tb.Label(master=contents_frame, text=var_notas, font=("Arial", 10, "normal"), padding=md_padd)
         lbl_notes.grid(column=0, row=1,columnspan=3, sticky='w')
-        
         
         additional_frame = tb.Frame(master=item_frame_lower,bootstyle='default')
         additional_frame.pack(side="top", fill='both', expand=True)
@@ -60,27 +74,28 @@ class ItemShow:
         #IMG FRAME
         
         #CONTROL FRAME⬇️
-        if data_dict['datasheet'] != '':
-            btn_dsheet = tb.Button(master=additional_frame, text=data_dict['datasheet'], bootstyle='success')
-        else:
-            btn_dsheet = tb.Button(master=additional_frame, text='No hay datasheet', bootstyle='warning')
-        btn_dsheet.pack(side='left', anchor='w')
-        
-        amt_fstring = f'{data_dict["cantidad"]}/ {data_dict["cantidadMaxima"]}'
-        lbl_cant = tb.Label(master=additional_frame, text=amt_fstring, font=("Arial", 12, "bold"), padding=md_padd)
-        lbl_cant.pack(side='left', anchor='center')
-        
-        lbl_date = tb.Label(master=additional_frame, text=data_dict['fechaInsercion'])
-        lbl_date.pack(side='right', anchor='e')
-        
+        if not self.isEmpty:   
+            if data_dict['datasheet'] != '':
+                btn_dsheet = tb.Button(master=additional_frame, text=data_dict['datasheet'], bootstyle='success')
+                if self.isEmpty:
+                    btn_dsheet.config(state='disabled')
+            else:
+                btn_dsheet = tb.Button(master=additional_frame, text='No hay datasheet', bootstyle='warning')
+            btn_dsheet.pack(side='left', anchor='w')
+            
+            amt_fstring = f'{data_dict["cantidad"]}/ {data_dict["cantidadMaxima"]}'
+            lbl_cant = tb.Label(master=additional_frame, text=amt_fstring, font=("Arial", 12, "bold"), padding=md_padd)
+            lbl_cant.pack(side='left', anchor='center')
+            
+            lbl_date = tb.Label(master=additional_frame, text=data_dict['fechaInsercion'])
+            lbl_date.pack(side='right', anchor='e')
+            
+            
+            
         control_frame = tb.Frame(master=item_frame_lower, bootstyle='dark')
         control_frame.pack(side="bottom", fill='both', expand=True)
-        EditBar(control_frame,'e')
+        EditBar(control_frame,'e',isEmpty=isEmpty)
         #Separador para el siguiente objeto
         sepa = tb.Separator(par, orient="horizontal", bootstyle="dark")
         sepa.pack(side='top', fill='x', pady=4,expand=True)
-        
-        
-        
-        
-        
+    
