@@ -4,6 +4,7 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.editbar import EditBar
 from logica.getContainerSize import get_container_size
+from data.itemlists import items
 
 
 """
@@ -25,8 +26,9 @@ data_arr ejemplo de estructura:
 md_padd = 10
 
 class ItemShow:
-    def __init__(self, par, data_dict, isEmpty=False) -> None:
+    def __init__(self, par, data_dict=items, isEmpty=False, boxnum=0) -> None:
         self.isEmpty = isEmpty
+        self.boxnum = boxnum
         item_frame = tb.Frame(master=par, bootstyle='dark', border=10)
         item_frame.pack(side='top', fill='x', expand=True)
         item_frame_lower = tb.Frame(master=par, bootstyle='light')
@@ -45,8 +47,8 @@ class ItemShow:
             var_model = data_dict['modelo']
             var_fabricante = data_dict['fabricante']
             var_notas = data_dict['notas']
-        else:
-            var_box_num = 99
+        else: #VALORES PARA VACIO
+            var_box_num = self.boxnum
             var_name = "VACIO"
             var_model = ""
             var_fabricante = ""
@@ -98,4 +100,5 @@ class ItemShow:
         #Separador para el siguiente objeto
         sepa = tb.Separator(par, orient="horizontal", bootstyle="dark")
         sepa.pack(side='top', fill='x', pady=4,expand=True)
+        
     

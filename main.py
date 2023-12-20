@@ -6,6 +6,8 @@ from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.item import ItemShow
 from interfaz.componentes.toolbar import Toolbar
 
+from logica.populateList import PopulateManager
+
 from data.itemlists import items
 
 root = tb.Window(themename='superhero')
@@ -36,14 +38,12 @@ fr_statusbar = tb.Frame(master=root, relief='sunken',padding=sml_padding)
 fr_statusbar.pack(fill='x', side='bottom', anchor='s')
 
 # Widgets del navbar
-NavBarTop(fr_navbar)
+NavBarTop(fr_navbar, sf_info_items)
 Toolbar(fr_left_toolbar)
 
 
 #Insercion item desde itemslist al arrancar el programa
-for data_item in items:
-    ItemShow(sf_info_items, data_item, isEmpty=False)
-ItemShow(sf_info_items, data_item, isEmpty=True)
+PopulateManager(sf_info_items)
 
 
 

@@ -2,23 +2,27 @@ from tkinter import StringVar
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from logica.showEmptyContainers import show_empty_containers
-
+from logica.DestroyChildren import destroy_children
+from interfaz.componentes.item import ItemShow
+from logica.populateList import PopulateManager
 
 class NavBarTop:
-    def __init__(self, par) -> None:
+    def __init__(self, par, sframe_ref) -> None:
         common_left = {'side':'left', 'padx':4}
         common_right = {'side':'right', 'anchor':'e'}
         
         navbar_frame = tb.Frame(master=par, bootstyle='dark')
         navbar_frame.pack(anchor='ne', fill='both', expand=True)
 
-        btn_showEmpty = tb.Button(master=navbar_frame, text='Mostrar vacios', command=lambda: show_empty_containers(par))
+        btn_showEmpty = tb.Button(master=navbar_frame, text='Mostrar vacios', command=lambda: show_empty_containers(sframe_ref))
         btn_showEmpty.pack(**common_left)
-        #todo: invocar funcion para comprobar cajones vacios
+        
+        btn_showAll = tb.Button(master=navbar_frame, text='Mostrar todos', bootstyle='info', command=lambda: PopulateManager(sframe_ref))
+        btn_showAll.pack(**common_left)
         
         
         
-        btn_refreshList = tb.Button(master=navbar_frame, text='Reiniciar lista')
+        btn_refreshList = tb.Button(master=navbar_frame, text='Vaciar lista', command=lambda: destroy_children(sframe_ref))
         btn_refreshList.pack(**common_left)
         
         btn_showFew = tb.Button(master=navbar_frame, text='Mostrar obj con poca cantidad', bootstyle='warning')
