@@ -3,7 +3,7 @@ items = [
     "nombre": "leds",
     "modelo": "LED-567",
     "fabricante": "L100TEX",
-    "cantidad": 30,
+    "cantidad": 2,
     "cantidadAviso": 5,
     "cantidadMaxima": 100,
     "datasheet": "www.dsheet.com/56789/data.php",

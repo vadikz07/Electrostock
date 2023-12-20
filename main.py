@@ -3,7 +3,6 @@ import ttkbootstrap as tb
 from ttkbootstrap.scrolled import ScrolledFrame
 from ttkbootstrap.constants import *
 from interfaz.componentes.navbar import NavBarTop
-from interfaz.componentes.item import ItemShow
 from interfaz.componentes.toolbar import Toolbar
 
 from logica.populateList import PopulateManager
@@ -43,7 +42,7 @@ Toolbar(fr_left_toolbar)
 
 
 #Insercion item desde itemslist al arrancar el programa
-PopulateManager(sf_info_items)
+PopulateManager(sf_info_items).visualize_all()
 
 
 

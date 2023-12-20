@@ -26,9 +26,10 @@ data_arr ejemplo de estructura:
 md_padd = 10
 
 class ItemShow:
-    def __init__(self, par, data_dict=items, isEmpty=False, boxnum=0) -> None:
+    def __init__(self, par, data_dict=items, isEmpty=False, boxnum=0, warn=False) -> None:
         self.isEmpty = isEmpty
         self.boxnum = boxnum
+        self.warn = warn
         item_frame = tb.Frame(master=par, bootstyle='dark', border=10)
         item_frame.pack(side='top', fill='x', expand=True)
         item_frame_lower = tb.Frame(master=par, bootstyle='light')
@@ -55,10 +56,11 @@ class ItemShow:
             var_notas = get_container_size(var_box_num)
             
             
-        lbl_boxNum = tb.Label(master=num_frame, text=var_box_num, font=("Arial", 24, "bold"), padding=md_padd)
+        color = 'orange' if self.warn else 'white'
+        lbl_boxNum = tb.Label(master=num_frame, text=var_box_num, font=("Arial", 24, "bold"), padding=md_padd, foreground=color)
         lbl_boxNum.pack(side='left')
         
-        lbl_name = tb.Label(master=contents_frame, text=var_name, font=("Arial", 12, "bold"), padding=md_padd)
+        lbl_name = tb.Label(master=contents_frame, text=var_name, font=("Arial", 12, "bold"), padding=md_padd, foreground=color)
         lbl_name.grid(column=0, row=0)
         
         lbl_model = tb.Label(master=contents_frame, text=var_model, font=("Arial", 10, "normal"), padding=md_padd)
@@ -86,7 +88,7 @@ class ItemShow:
             btn_dsheet.pack(side='left', anchor='w')
             
             amt_fstring = f'{data_dict["cantidad"]}/ {data_dict["cantidadMaxima"]}'
-            lbl_cant = tb.Label(master=additional_frame, text=amt_fstring, font=("Arial", 12, "bold"), padding=md_padd)
+            lbl_cant = tb.Label(master=additional_frame, text=amt_fstring, font=("Arial", 12, "bold"), padding=md_padd, foreground=color)
             lbl_cant.pack(side='left', anchor='center')
             
             lbl_date = tb.Label(master=additional_frame, text=data_dict['fechaInsercion'])
