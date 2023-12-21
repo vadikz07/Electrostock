@@ -20,3 +20,16 @@ class PopulateManager:
         items_low = [item for item in items if item['cantidad'] < item['cantidadAviso']]
         for item_l in items_low:
             ItemShow(self.frame, item_l,warn=True)
+            
+    def organize_by(self, sortby:str):
+        self.clear_children()
+        data_sorted = []
+        match sortby:
+            case 'num':
+                data_sorted = sorted(items, key=lambda x: x['localizacion'])
+            case 'name':
+                data_sorted = sorted(items, key=lambda x: x['nombre'])    
+            case _:
+                print('Sort no realizado.')
+        for item_s in data_sorted:
+            ItemShow(self.frame, item_s)

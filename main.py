@@ -38,7 +38,7 @@ fr_statusbar.pack(fill='x', side='bottom', anchor='s')
 
 # Widgets del navbar
 NavBarTop(fr_navbar, sf_info_items)
-Toolbar(fr_left_toolbar)
+Toolbar(fr_left_toolbar, sf_info_items)
 
 
 #Insercion item desde itemslist al arrancar el programa

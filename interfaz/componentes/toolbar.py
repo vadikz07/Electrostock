@@ -3,9 +3,10 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.newItemForm import NewItemForm
 from interfaz.componentes.thumbgen import ThumbGen
+from logica.populateList import PopulateManager
 
 class Toolbar:
-    def __init__(self, par) -> None:
+    def __init__(self, par, infoframe=None) -> None:
         common_settings = {'side':'top', 'fill':'x', 'pady':5, 'padx':5, 'anchor':'n'}
         
         container = tb.Frame(master=par, bootstyle='dark')
@@ -14,10 +15,10 @@ class Toolbar:
         btn_newItem = tb.Button(master=container, text='Añadir nuevo')
         btn_newItem.pack(**common_settings)
         
-        btn_sortName = tb.Button(master=container, text='Org. alfab.')
+        btn_sortName = tb.Button(master=container, text='Org. alfab.', command=lambda: PopulateManager(infoframe).organize_by('name'))
         btn_sortName.pack(**common_settings)
         
-        btn_sortNum = tb.Button(master=container, text='Org. Numero')
+        btn_sortNum = tb.Button(master=container, text='Org. Numero', command=lambda: PopulateManager(infoframe).organize_by('num'))
         btn_sortNum.pack(**common_settings)
         
         btn_export = tb.Button(master=container, text='Exportar')

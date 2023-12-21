@@ -51,4 +51,17 @@ items = [
     "fechaInsercion": "5 marzo 2021",
     "localizacion": 78
   },
+    {
+    "nombre": "prueba",
+    "modelo": "NPN-78912",
+    "fabricante": "EJEXAS",
+    "cantidad": 4,
+    "cantidadAviso": 10,
+    "cantidadMaxima": 100,
+    "datasheet": "",
+    "imagen": "https://www.cetronic.es/sqlcommerce/ficheros/dk_93/productos/211051004-2.jpg",
+    "notas": "transistores de uso general",
+    "fechaInsercion": "5 marzo 2021",
+    "localizacion": 3,
+  },
 ]
