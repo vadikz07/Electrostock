@@ -11,7 +11,7 @@ from data.itemlists import items
 
 root = tb.Window(themename='superhero')
 root.title('Electrostock')
-wid = 950
+wid = 1050
 hei = 1000
 root.geometry(f'{wid}x{hei}')
 

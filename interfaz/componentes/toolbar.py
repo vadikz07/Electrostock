@@ -33,3 +33,4 @@ class Toolbar:
         btn_exit = tb.Button(master=container, text='Salir', bootstyle='danger')        
         btn_exit.pack(side='bottom', fill='x', expand=True, anchor='s')
         
+        #Metricas 

@@ -36,7 +36,8 @@ class PopulateManager:
         for item_s in data_sorted:
             ItemShow(self.frame, item_s)
             
-    def search_item(self,query:str):
+    def search_item(self,query:str, resolution=precision_search):
+        self.precision_search = resolution
         found_results = []
         print(f'Searching for {query}')
         for item_s in items:
