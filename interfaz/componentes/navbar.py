@@ -21,9 +21,9 @@ class NavBarTop:
         
         
         btn_refreshList = tb.Button(master=navbar_frame, text='Vaciar lista', command=lambda: PopulateManager(sframe_ref).clear_children())
-        btn_refreshList.pack(**common_left)
+        # btn_refreshList.pack(**common_left)
         
-        btn_showFew = tb.Button(master=navbar_frame, text='Mostrar obj con poca cantidad', bootstyle='warning', command=lambda: PopulateManager(sframe_ref).visualize_low_qty())
+        btn_showFew = tb.Button(master=navbar_frame, text='Mostrar con poca cantidad', bootstyle='warning', command=lambda: PopulateManager(sframe_ref).visualize_low_qty())
         btn_showFew.pack(**common_left)
         
         btn_commitSearch = tb.Button(master=navbar_frame, text='Buscar', command=lambda: PopulateManager(sframe_ref).search_item(ent_searchBar.get()))

@@ -12,10 +12,7 @@ class Toolbar:
         container = tb.Frame(master=par, bootstyle='dark')
         container.pack(side='top', fill='both', expand=True)
         
-        btn_newItem = tb.Button(master=container, text='Añadir nuevo')
-        btn_newItem.pack(**common_settings)
-        
-        btn_sortName = tb.Button(master=container, text='Org. alfab.', command=lambda: PopulateManager(infoframe).organize_by('name'))
+        btn_sortName = tb.Button(master=container, text='Org. Nombre', command=lambda: PopulateManager(infoframe).organize_by('name'))
         btn_sortName.pack(**common_settings)
         
         btn_sortNum = tb.Button(master=container, text='Org. Numero', command=lambda: PopulateManager(infoframe).organize_by('num'))
