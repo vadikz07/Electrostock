@@ -26,7 +26,7 @@ class NavBarTop:
         btn_showFew = tb.Button(master=navbar_frame, text='Mostrar obj con poca cantidad', bootstyle='warning', command=lambda: PopulateManager(sframe_ref).visualize_low_qty())
         btn_showFew.pack(**common_left)
         
-        btn_commitSearch = tb.Button(master=navbar_frame, text='Buscar')
+        btn_commitSearch = tb.Button(master=navbar_frame, text='Buscar', command=lambda: PopulateManager(sframe_ref).search_item(ent_searchBar.get()))
         btn_commitSearch.pack(**common_right)
         
         value_searchBar = StringVar()

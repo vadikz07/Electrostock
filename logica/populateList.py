@@ -1,7 +1,9 @@
 from interfaz.componentes.item import ItemShow
 from data.itemlists import items
+from fuzzywuzzy import fuzz
     
 class PopulateManager:
+    precision_search = 70 #ratio requerido para considerar un match
     def __init__(self, frame, data_dict=items) -> None:
         self.items = data_dict
         self.frame = frame
@@ -33,3 +35,15 @@ class PopulateManager:
                 print('Sort no realizado.')
         for item_s in data_sorted:
             ItemShow(self.frame, item_s)
+            
+    def search_item(self,query:str):
+        found_results = []
+        print(f'Searching for {query}')
+        for item_s in items:
+            comparison_result = fuzz.ratio(query.lower().strip(), item_s['nombre'].lower())
+            print(f'Match: {comparison_result}')
+            if comparison_result >= self.precision_search:
+                found_results.append(item_s)
+        self.clear_children()
+        for match_ in found_results:
+            ItemShow(self.frame, match_)
