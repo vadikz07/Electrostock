@@ -1,10 +1,11 @@
 from interfaz.componentes.item import ItemShow
+from logica.getDataLogic import getData
 from fuzzywuzzy import fuzz
     
 class PopulateManager:
     precision_search = 70 #ratio requerido para considerar un match
-    def __init__(self, frame, data_dict) -> None:
-        self.items = data_dict
+    def __init__(self, frame, data_dict=None) -> None:
+        self.items = getData()
         self.frame = frame
     
     def clear_children(self):
