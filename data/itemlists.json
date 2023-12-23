@@ -1,4 +1,4 @@
-items = [
+[
     {
     "nombre": "leds",
     "modelo": "LED-567",
@@ -62,6 +62,6 @@ items = [
     "imagen": "https://www.cetronic.es/sqlcommerce/ficheros/dk_93/productos/211051004-2.jpg",
     "notas": "transistores de uso general",
     "fechaInsercion": "5 marzo 2021",
-    "localizacion": 3,
-  },
+    "localizacion": 3
+  }
 ]

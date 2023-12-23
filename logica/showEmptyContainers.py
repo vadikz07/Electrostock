@@ -1,9 +1,10 @@
-from data.itemlists import items
+# from data.itemlists import items
 from interfaz.componentes.item import ItemShow
 from logica.DestroyChildren import destroy_children
+from logica.getDataLogic import getData
 
 def show_empty_containers(parent):
-    containers_w_stuff = [item['localizacion'] for item in items]
+    containers_w_stuff = [item['localizacion'] for item in getData()]
     containers_empty = [num for num in range(1,99+1) if num in containers_w_stuff]
     print(containers_empty)
     

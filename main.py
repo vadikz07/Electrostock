@@ -5,8 +5,8 @@ from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.toolbar import Toolbar
 
 from logica.populateList import PopulateManager
+from logica.getDataLogic import getData
 
-from data.itemlists import items
 
 root = tb.Window(themename='superhero')
 root.title('Electrostock')
@@ -41,7 +41,7 @@ Toolbar(fr_left_toolbar,root, sf_info_items)
 
 
 #Insercion item desde itemslist al arrancar el programa
-PopulateManager(sf_info_items).visualize_all()
+PopulateManager(sf_info_items, getData()).visualize_all()
 
 
 

@@ -1,4 +1,3 @@
-from data.itemlists import items
 import ast
 
 class InsertionManager:

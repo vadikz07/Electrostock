@@ -1,10 +1,9 @@
 from interfaz.componentes.item import ItemShow
-from data.itemlists import items
 from fuzzywuzzy import fuzz
     
 class PopulateManager:
     precision_search = 70 #ratio requerido para considerar un match
-    def __init__(self, frame, data_dict=items) -> None:
+    def __init__(self, frame, data_dict) -> None:
         self.items = data_dict
         self.frame = frame
     
@@ -14,12 +13,12 @@ class PopulateManager:
     
     def visualize_all(self):
         self.clear_children()
-        for data_item in items:
+        for data_item in self.items:
             ItemShow(self.frame, data_item)
     
     def visualize_low_qty(self):
         self.clear_children()
-        items_low = [item for item in items if item['cantidad'] < item['cantidadAviso']]
+        items_low = [item for item in self.items if item['cantidad'] < item['cantidadAviso']]
         for item_l in items_low:
             ItemShow(self.frame, item_l,warn=True)
             
@@ -28,9 +27,9 @@ class PopulateManager:
         data_sorted = []
         match sortby:
             case 'num':
-                data_sorted = sorted(items, key=lambda x: x['localizacion'])
+                data_sorted = sorted(self.items, key=lambda x: x['localizacion'])
             case 'name':
-                data_sorted = sorted(items, key=lambda x: x['nombre'])    
+                data_sorted = sorted(self.items, key=lambda x: x['nombre'])    
             case _:
                 print('Sort no realizado.')
         for item_s in data_sorted:
@@ -40,7 +39,7 @@ class PopulateManager:
         self.precision_search = resolution
         found_results = []
         print(f'Searching for {query}')
-        for item_s in items:
+        for item_s in self.items:
             comparison_result = fuzz.ratio(query.lower().strip(), item_s['nombre'].lower())
             print(f'Match: {comparison_result}')
             if comparison_result >= self.precision_search:
