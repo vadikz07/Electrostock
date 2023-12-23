@@ -1,4 +1,3 @@
-import tkinter as tk
 import ttkbootstrap as tb
 from ttkbootstrap.scrolled import ScrolledFrame
 from ttkbootstrap.constants import *
@@ -38,7 +37,7 @@ fr_statusbar.pack(fill='x', side='bottom', anchor='s')
 
 # Widgets del navbar
 NavBarTop(fr_navbar, sf_info_items)
-Toolbar(fr_left_toolbar, sf_info_items)
+Toolbar(fr_left_toolbar,root, sf_info_items)
 
 
 #Insercion item desde itemslist al arrancar el programa

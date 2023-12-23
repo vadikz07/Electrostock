@@ -1,5 +1,7 @@
 from tkinter import *
 import ttkbootstrap as tb
+from logica.InsertionManager import InsertionManager
+
 
 class NewItemForm:
     x_padd =5
@@ -83,6 +85,9 @@ class NewItemForm:
         
         add_dataDB_btn = tb.Button(master=control_lblframe, text='Agregar componente', bootstyle='success')
         add_dataDB_btn.pack(side='right', padx=(5,0), anchor='e', fill='x')
+        
+        cli_btn = tb.Button(master=control_lblframe, text='CLI', bootstyle='info', command=lambda: InsertionManager().wizard_cli())
+        cli_btn.pack(side='right', padx=(5,0), anchor='e', fill='x')
         
         
         

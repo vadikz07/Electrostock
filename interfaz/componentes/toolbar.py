@@ -6,7 +6,8 @@ from interfaz.componentes.thumbgen import ThumbGen
 from logica.populateList import PopulateManager
 
 class Toolbar:
-    def __init__(self, par, infoframe=None) -> None:
+    def __init__(self, par, root, infoframe=None) -> None:
+        self.root = root
         common_settings = {'side':'top', 'fill':'x', 'pady':5, 'padx':5, 'anchor':'n'}
         
         container = tb.Frame(master=par, bootstyle='dark')
@@ -30,7 +31,7 @@ class Toolbar:
         btn_addNew = tb.Button(master=container, text='Añadir objeto', bootstyle='success', command=lambda: NewItemForm(par))
         btn_addNew.pack(**common_settings)
 
-        btn_exit = tb.Button(master=container, text='Salir', bootstyle='danger')        
+        btn_exit = tb.Button(master=container, text='Salir', bootstyle='danger', command=self.root.destroy)        
         btn_exit.pack(side='bottom', fill='x', expand=True, anchor='s')
         
         #Metricas 

@@ -4,7 +4,6 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.editbar import EditBar
 from logica.getContainerSize import get_container_size
-from data.itemlists import items
 
 
 """
@@ -26,7 +25,7 @@ data_arr ejemplo de estructura:
 md_padd = 10
 
 class ItemShow:
-    def __init__(self, par, data_dict=items, isEmpty=False, boxnum=0, warn=False) -> None:
+    def __init__(self, par, data_dict, isEmpty=False, boxnum=0, warn=False) -> None:
         self.isEmpty = isEmpty
         self.boxnum = boxnum
         self.warn = warn
