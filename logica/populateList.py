@@ -28,7 +28,7 @@ class PopulateManager:
         data_sorted = []
         match sortby:
             case 'num':
-                data_sorted = sorted(self.items, key=lambda x: x['localizacion'])
+                data_sorted = sorted(self.items, key=lambda x: int(x['localizacion']))
             case 'name':
                 data_sorted = sorted(self.items, key=lambda x: x['nombre'])    
             case _:

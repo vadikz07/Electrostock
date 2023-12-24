@@ -16,8 +16,7 @@ class EditBar:
         btn_notes = tb.Button(master=par, text='Leer notas', command=lambda: NotePopup(par, self.objectdata))
         btn_notes.pack(**common_settings)
         #si la longitud de las notas es menor a MAX_LEN_NOTES (45), desactivar boton
-        print(self.objectdata['notas'])
-        if len(objectdata['notas']) > MAX_LEN_NOTES:
+        if len(self.objectdata['notas']) > MAX_LEN_NOTES:
             btn_notes.config(state='enabled')
         else:
             btn_notes.config(state='disabled')

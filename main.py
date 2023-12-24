@@ -5,7 +5,6 @@ from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.toolbar import Toolbar
 
 from logica.populateList import PopulateManager
-from logica.InsertionManager import InsertionManager
 from logica.getDataLogic import getData
 
 
