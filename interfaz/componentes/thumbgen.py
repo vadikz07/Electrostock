@@ -62,11 +62,7 @@ class ThumbGen():
         
         generateImg_btn = tb.Button(master=control_lbl_frame, text='Generar etiqueta', bootstyle='info', command=lambda: self.genImage())
         generateImg_btn.pack(side='top', **self.common_options)
-        #DEBUG
-        self.cajon_num_var.set('44')
-        self.cajon_nombre_var.set('Resistencias')
-        self.cajon_modelo_var.set("SMD 1-10K")
-        
+
     def trim_string(self, string, maxlen = maxlengthstr):
         return string if len(string) <= maxlen else f'...{string[-maxlen:]}'
         

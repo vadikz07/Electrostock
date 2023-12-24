@@ -4,7 +4,8 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.editbar import EditBar
 from logica.getContainerSize import get_container_size
-
+from logica.BrowserLogic import open_dsheet_url
+from logica.constants_data import *
 
 """
 data_arr ejemplo de estructura:
@@ -29,6 +30,7 @@ class ItemShow:
         self.isEmpty = isEmpty
         self.boxnum = boxnum
         self.warn = warn
+        self.maxlennotes = MAX_LEN_NOTES
         item_frame = tb.Frame(master=par, bootstyle='dark', border=10)
         item_frame.pack(side='top', fill='x', expand=True)
         item_frame_lower = tb.Frame(master=par, bootstyle='light')
@@ -68,7 +70,8 @@ class ItemShow:
         lbl_fabricante = tb.Label(master=contents_frame, text=var_fabricante, font=("Arial", 10, "italic"), padding=md_padd)
         lbl_fabricante.grid(column=2, row=0, sticky='e')
         
-        lbl_notes = tb.Label(master=contents_frame, text=var_notas, font=("Arial", 10, "normal"), padding=md_padd)
+        formatted_notes = f'{var_notas[0:self.maxlennotes]}... (Leer mas)' if len(var_notas) > self.maxlennotes else var_notas
+        lbl_notes = tb.Label(master=contents_frame, text=formatted_notes, font=("Arial", 10, "normal"), padding=md_padd)
         lbl_notes.grid(column=0, row=1,columnspan=3, sticky='w')
         
         additional_frame = tb.Frame(master=item_frame_lower,bootstyle='default')
@@ -85,6 +88,7 @@ class ItemShow:
             else:
                 btn_dsheet = tb.Button(master=additional_frame, text='No hay datasheet', bootstyle='warning')
             btn_dsheet.pack(side='left', anchor='w')
+            btn_dsheet.config(command=lambda: open_dsheet_url(data_dict['datasheet']))
             
             amt_fstring = f'{data_dict["cantidad"]}/ {data_dict["cantidadMaxima"]}'
             lbl_cant = tb.Label(master=additional_frame, text=amt_fstring, font=("Arial", 12, "bold"), padding=md_padd, foreground=color)
@@ -97,9 +101,8 @@ class ItemShow:
             
         control_frame = tb.Frame(master=item_frame_lower, bootstyle='dark')
         control_frame.pack(side="bottom", fill='both', expand=True)
-        EditBar(control_frame,'e',isEmpty=isEmpty)
+        EditBar(par=control_frame,stickto='e',isEmpty=isEmpty,objectdata=data_dict)
         #Separador para el siguiente objeto
         sepa = tb.Separator(par, orient="horizontal", bootstyle="dark")
         sepa.pack(side='top', fill='x', pady=4,expand=True)
         
-    
