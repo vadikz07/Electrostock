@@ -6,6 +6,9 @@ class InsertionManager:
         self.current_object = {}
         self.data = []
     
+    def generate_object(self, data_dict):
+        print(f'Generando objeto: {data_dict}')
+
     def wizard_cli(self) -> dict:
         print('Nuevo objeto, inserta los siguientes datos: ')
         for prop in self.props_query:

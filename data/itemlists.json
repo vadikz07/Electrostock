@@ -1,5 +1,5 @@
 [
-    {
+  {
     "nombre": "leds",
     "modelo": "LED-567",
     "fabricante": "L100TEX",
@@ -21,7 +21,7 @@
     "cantidadMaxima": 200,
     "datasheet": "www.dsheet.com/45678/data.php",
     "imagen": "https://www.cetronic.es/sqlcommerce/ficheros/dk_93/productos/211051004-2.jpg",
-    "notas": "condensadores electrolíticos",
+    "notas": "condensadores electrol\u00c3\u00adticos",
     "fechaInsercion": "15 mayo 2021",
     "localizacion": 61
   },
@@ -34,7 +34,7 @@
     "cantidadMaxima": 50,
     "datasheet": "www.dsheet.com/78901/data.php",
     "imagen": "https://www.cetronic.es/sqlcommerce/ficheros/dk_93/productos/211051004-2.jpg",
-    "notas": "sensores de temperatura analógicos",
+    "notas": "sensores de temperatura anal\u00c3\u00b3gicos",
     "fechaInsercion": "20 junio 2021",
     "localizacion": 89
   },
@@ -51,7 +51,7 @@
     "fechaInsercion": "5 marzo 2021",
     "localizacion": 78
   },
-    {
+  {
     "nombre": "prueba",
     "modelo": "NPN-78912",
     "fabricante": "EJEXAS",
@@ -63,5 +63,17 @@
     "notas": "transistores de uso general",
     "fechaInsercion": "5 marzo 2021",
     "localizacion": 3
+  },
+  {
+    "nombre": "dfsg",
+    "modelo": "dfgh",
+    "fabricante": "",
+    "cantidad": 1,
+    "cantidadAviso": 4,
+    "cantidadMaxima": 2,
+    "datasheet": "fgdh",
+    "notas": "dfgh",
+    "fechaInsercion": "24/12/2023",
+    "localizacion": "435"
   }
 ]
