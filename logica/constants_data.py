@@ -12,3 +12,4 @@ ITEM_STRUCTURE = {
     "fechaInsercion": "",
     "localizacion": 0
   }
+MAX_LEN_NOTES_FULL = 400

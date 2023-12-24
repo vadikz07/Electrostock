@@ -45,11 +45,11 @@ PopulateManager(sf_info_items, getData()).visualize_all()
 
 
 status_lbl = tb.Label(master=fr_statusbar, text="this is a test for the status bar")
-status_lbl.pack(anchor="e")
+status_lbl.pack(anchor="e", expand=True, fill="x")
+
 
 root.update()
 root.mainloop()
-
 
 
 root.mainloop()

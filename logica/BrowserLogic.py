@@ -11,3 +11,8 @@ def open_dsheet_url(url_string='http://www.thisisatest.com/testing'):
     else:
         print('url vacia')
         return 1
+
+def validate_url(url_string):
+    if re.match(pattern, url_string):
+        return True
+    return False
