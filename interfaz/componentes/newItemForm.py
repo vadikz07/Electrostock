@@ -105,7 +105,7 @@ class NewItemForm:
         data_dict['fechaInsercion'] = self.testdate.entry.get()
         data_dict['localizacion'] = self.boxnum_ent.get()
         saveData(data_dict)
-        TODO: Añadir validacion de las entradas , ej, Nombre no este vacio y sea mayor a 3 caracteres, etc...
+        #TODO: Añadir validacion de las entradas , ej, Nombre no este vacio y sea mayor a 3 caracteres, etc...
     
 
         
