@@ -54,16 +54,16 @@ def validateData(datadict: dict):
         and type(datadict["localizacion"]) == int
     )
 
-    # DEBUG
-    print(type(datadict["localizacion"]))
-    print(f"nombre {b_nombre_ok}")
-    print(f"modelo {b_modelo_ok}")
-    print(f"cant {b_cantidad_ok}")
-    print(f"cantwarn {b_cantidadAviso_ok}")
-    print(f"cantmax {b_cantidadMaxima_ok}")
-    print(f"dsheet {b_datasheet_ok}")
-    print(f"notas {b_notas_ok}")
-    print(f"local {b_localizacion_ok}")
+    # # DEBUG
+    # print(type(datadict["localizacion"]))
+    # print(f"nombre {b_nombre_ok}")
+    # print(f"modelo {b_modelo_ok}")
+    # print(f"cant {b_cantidad_ok}")
+    # print(f"cantwarn {b_cantidadAviso_ok}")
+    # print(f"cantmax {b_cantidadMaxima_ok}")
+    # print(f"dsheet {b_datasheet_ok}")
+    # print(f"notas {b_notas_ok}")
+    # print(f"local {b_localizacion_ok}")
 
     if (
         b_nombre_ok

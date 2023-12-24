@@ -170,15 +170,15 @@ class NewItemForm:
 
         self.debug_data()
 
-    def debug_data(self):
-        self.boxnum_ent.set(66)
-        self.name_ent_var.set("Arduino")
-        self.model_ent_var.set("Micro")
-        self.cant_act_entry_var.set(10)
-        self.cant_warn_entry_var.set(5)
-        self.cant_max_entry_var.set(50)
-        self.dsheet_ent_var.set("http://www.google.es")
-        self.notes_text.insert("1.0", "Prueba de notas")
+    # def debug_data(self):
+    #     self.boxnum_ent.set(66)
+    #     self.name_ent_var.set("Arduino")
+    #     self.model_ent_var.set("Micro")
+    #     self.cant_act_entry_var.set(10)
+    #     self.cant_warn_entry_var.set(5)
+    #     self.cant_max_entry_var.set(50)
+    #     self.dsheet_ent_var.set("http://www.google.es")
+    #     self.notes_text.insert("1.0", "Prueba de notas")
 
     def collect_data(self) -> dict:
         print(f"Ejecutando collect data")
