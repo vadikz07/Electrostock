@@ -36,39 +36,45 @@ def saveData(datadict_to_insert: dict) -> bool:
 def validateData(datadict: dict):
     b_nombre_ok = 3 <= len(datadict["nombre"]) <= 30
     b_modelo_ok = 3 <= len(datadict["modelo"]) <= 30
-    b_cantidad_ok = (
-        1 <= int(datadict["cantidad"]) <= 999 and type(datadict["cantidad"]) == int
-    )
-    b_cantidadAviso_ok = (
-        1 <= int(datadict["cantidadAviso"]) <= 999
-        and type(datadict["cantidadAviso"]) == int
-    )
-    b_cantidadMaxima_ok = (
-        1 <= int(datadict["cantidadMaxima"]) <= 999
-        and type(datadict["cantidadMaxima"]) == int
-    )
-    b_datasheet_ok = validate_url(datadict["datasheet"])
+    try:
+        b_cantidad_ok = 1 <= int(datadict["cantidad"]) <= 999
+    except ValueError:
+        b_cantidad_ok = False
+    try:
+        b_cantidadAviso_ok = 1 <= int(datadict["cantidadAviso"]) <= 999
+    except ValueError:
+        b_cantidadAviso_ok = False
+    try:
+        b_cantidadMaxima_ok = 1 <= int(datadict["cantidadMaxima"]) <= 999
+    except ValueError:
+        b_cantidadMaxima_ok = False
+
+    if datadict["datasheet"] == "":
+        b_datasheet_ok = True
+    else:
+        b_datasheet_ok = validate_url(datadict["datasheet"])
+
     b_notas_ok = 5 <= len(datadict["notas"]) <= MAX_LEN_NOTES_FULL
+
     try:
         localizacion_var = int(datadict["localizacion"])
     except ValueError:
         localizacion_var = 0
-        
+
     b_localizacion_ok = (
-        1 <= localizacion_var <= 99
-        and type(datadict["localizacion"]) == int
+        1 <= localizacion_var <= 99 and type(datadict["localizacion"]) == int
     )
 
-    # # DEBUG
-    # print(type(datadict["localizacion"]))
-    # print(f"nombre {b_nombre_ok}")
-    # print(f"modelo {b_modelo_ok}")
-    # print(f"cant {b_cantidad_ok}")
-    # print(f"cantwarn {b_cantidadAviso_ok}")
-    # print(f"cantmax {b_cantidadMaxima_ok}")
-    # print(f"dsheet {b_datasheet_ok}")
-    # print(f"notas {b_notas_ok}")
-    # print(f"local {b_localizacion_ok}")
+    # DEBUG
+    print(type(datadict["localizacion"]))
+    print(f"nombre {b_nombre_ok}")
+    print(f"modelo {b_modelo_ok}")
+    print(f"cant {b_cantidad_ok}")
+    print(f"cantwarn {b_cantidadAviso_ok}")
+    print(f"cantmax {b_cantidadMaxima_ok}")
+    print(f"dsheet {b_datasheet_ok}")
+    print(f"notas {b_notas_ok}")
+    print(f"local {b_localizacion_ok}")
 
     if (
         b_nombre_ok

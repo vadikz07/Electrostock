@@ -56,14 +56,10 @@ class NewItemForm:
         )
 
         ##Entry del lblframe especifico para actual
-        self.cant_act_entry_var = IntVar()
-        self.cant_act_entry = tb.Entry(
-            master=self.cant_act_lblframe,
-            width=self.width_entries_int,
-            textvariable=self.cant_act_entry_var,
-        )
-        self.cant_act_entry.pack(side="top", fill="x")
+        self.cant_act_entry_var = tb.Spinbox(master=self.cant_act_lblframe, from_=1, to=200)
+        self.cant_act_entry_var.pack(side="top", fill="x")
         self.list_entry_widgets.append(self.cant_act_entry_var)
+        
         # Segundo hijo de cant frame para maximo
         self.cant_max_lblframe = tb.LabelFrame(master=self.cant_frame, text="Maximo")
         # self.cant_max_lblframe.grid(row=0, column=1)
@@ -71,13 +67,8 @@ class NewItemForm:
             side="left", padx=(5, 5), anchor="center", fill="x", expand=True
         )
         ##Entry para el maximo
-        self.cant_max_entry_var = IntVar()
-        self.cant_max_entry = tb.Entry(
-            master=self.cant_max_lblframe,
-            width=self.width_entries_int,
-            textvariable=self.cant_max_entry_var,
-        )
-        self.cant_max_entry.pack(side="top", fill="x")
+        self.cant_max_entry_var = tb.Spinbox(master=self.cant_max_lblframe, from_=1, to=200)
+        self.cant_max_entry_var.pack(side="top", fill="x")
         self.list_entry_widgets.append(self.cant_max_entry_var)
 
         # Tercer hijo de cant frame para aviso
@@ -88,13 +79,8 @@ class NewItemForm:
             side="left", padx=(5, 0), anchor="e", fill="x", expand=True
         )
         ##Entry para el aviso
-        self.cant_warn_entry_var = IntVar()
-        self.cant_warn_entry = tb.Entry(
-            master=self.cant_warn_lblframe,
-            width=self.width_entries_int,
-            textvariable=self.cant_warn_entry_var,
-        )
-        self.cant_warn_entry.pack(side="top", fill="x")
+        self.cant_warn_entry_var = tb.Spinbox(master=self.cant_warn_lblframe, from_=1, to=200)
+        self.cant_warn_entry_var.pack(side="top", fill="x")
         self.list_entry_widgets.append(self.cant_warn_entry_var)
 
         # todo: continuar formulario con los datos de itemlist

@@ -46,7 +46,7 @@ class Toolbar:
         btn_genThumb.pack(**common_settings)
         # DEBUG
         # ThumbGen(par)
-        NewItemForm(par)
+        # NewItemForm(par)
 
         # boton para abrir nueva ventana con formulario de insercion
         btn_addNew = tb.Button(
