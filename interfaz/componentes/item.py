@@ -1,5 +1,4 @@
 from tkinter import *
-from PIL import ImageTk, Image
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.editbar import EditBar
@@ -10,6 +9,7 @@ from logica.constants_data import *
 """
 data_arr ejemplo de estructura:
 {
+    "uuid" : "550e8400-e29b-41d4-a716-446655440000"
     "nombre": "leds",                                           x
     "modelo": "LED-567",                                        x
     "cantidad": 30,                                             x
@@ -66,10 +66,14 @@ class ItemShow:
         lbl_name.grid(column=0, row=0)
         
         lbl_model = tb.Label(master=contents_frame, text=var_model, font=("Arial", 10, "normal"), padding=md_padd)
-        lbl_model.grid(column=1, row=0)
+        lbl_model.grid(column=1, row=0, sticky='e')
         
         lbl_fabricante = tb.Label(master=contents_frame, text=var_fabricante, font=("Arial", 10, "italic"), padding=md_padd)
         lbl_fabricante.grid(column=2, row=0, sticky='e')
+        
+        contents_frame.grid_columnconfigure(0, weight=0)
+        contents_frame.grid_columnconfigure(1, weight=20)
+        contents_frame.grid_columnconfigure(2, weight=10)
         
         formatted_notes = f'{var_notas[0:self.maxlennotes]}... (Leer mas)' if len(var_notas) > self.maxlennotes else var_notas
         lbl_notes = tb.Label(master=contents_frame, text=formatted_notes, font=("Arial", 10, "normal"), padding=md_padd)

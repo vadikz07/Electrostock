@@ -3,7 +3,7 @@ import ttkbootstrap as tb
 from logica.InsertionManager import InsertionManager
 from logica.getDataLogic import *
 from logica.getDataLogic import validateData
-
+from uuid import uuid4
 
 class NewItemForm:
     x_padd = 5
@@ -44,6 +44,16 @@ class NewItemForm:
         )
         self.model_ent.pack(side="left", fill="x", expand=True, anchor="w")
         self.list_entry_widgets.append(self.model_ent_var)
+
+        self.maker_lblframe = tb.LabelFrame(master=self.main_container, text="Fabricante")
+        self.maker_lblframe.grid(row=2, column=0, columnspan=2, sticky="ew")
+        self.maker_ent_var = StringVar()
+        self.maker_ent = tb.Entry(
+            master=self.maker_lblframe, textvariable=self.maker_ent_var
+        )
+        self.maker_ent.pack(side="left", fill="x", expand=True, anchor="w")
+        self.list_entry_widgets.append(self.maker_ent_var)
+
 
         # Cantidades en un frame propio
         self.cant_frame = tb.LabelFrame(master=self.main_container, text="Cantidad")
@@ -170,9 +180,10 @@ class NewItemForm:
     def collect_data(self) -> dict:
         print(f"Ejecutando collect data")
         data_dict = {}
+        data_dict["uuid"] = str(uuid4())
         data_dict["nombre"] = self.name_ent_var.get()
         data_dict["modelo"] = self.model_ent_var.get()
-        data_dict["fabricante"] = ""
+        data_dict["fabricante"] = self.maker_ent_var.get()
         data_dict["cantidad"] = self.cant_act_entry_var.get()
         data_dict["cantidadAviso"] = self.cant_warn_entry_var.get()
         data_dict["cantidadMaxima"] = self.cant_max_entry_var.get()

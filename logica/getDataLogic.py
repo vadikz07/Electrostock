@@ -36,6 +36,10 @@ def saveData(datadict_to_insert: dict) -> bool:
 def validateData(datadict: dict):
     b_nombre_ok = 3 <= len(datadict["nombre"]) <= 30
     b_modelo_ok = 3 <= len(datadict["modelo"]) <= 30
+    if datadict["fabricante"] == '':
+        b_maker_ok = True
+    else:
+        b_maker_ok = 3 <= len(datadict["fabricante"]) <= 30
     try:
         b_cantidad_ok = 1 <= int(datadict["cantidad"]) <= 999
     except ValueError:
@@ -69,6 +73,7 @@ def validateData(datadict: dict):
     print(type(datadict["localizacion"]))
     print(f"nombre {b_nombre_ok}")
     print(f"modelo {b_modelo_ok}")
+    print(f"maker {b_maker_ok}")
     print(f"cant {b_cantidad_ok}")
     print(f"cantwarn {b_cantidadAviso_ok}")
     print(f"cantmax {b_cantidadMaxima_ok}")
@@ -79,6 +84,7 @@ def validateData(datadict: dict):
     if (
         b_nombre_ok
         and b_modelo_ok
+        and b_maker_ok
         and b_cantidad_ok
         and b_cantidadAviso_ok
         and b_cantidadMaxima_ok
