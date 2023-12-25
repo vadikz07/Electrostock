@@ -14,8 +14,8 @@ class NewItemForm:
         self.root = par
         self.newWindow = tb.Toplevel(self.root)
         self.newWindow.title("Formulario de insercion")
+        self.newWindow.geometry("+%d+%d" % ((self.root.winfo_screenwidth() - 800) / 2, (self.root.winfo_screenheight() - 800) / 2))
         self.list_entry_widgets = []
-
         self.main_container = tb.Frame(master=self.newWindow, padding=self.x_padd)
         self.main_container.pack()
 

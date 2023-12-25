@@ -11,6 +11,7 @@ class ThumbGen():
         self.root = par
         self.newWindow = tb.Toplevel(self.root)
         self.newWindow.title('Generador de etiquetas')
+        self.newWindow.geometry("+%d+%d" % ((self.root.winfo_screenwidth() - self.newWindow.winfo_reqwidth()) / 2, (self.root.winfo_screenheight() - self.newWindow.winfo_reqheight() - 600) / 2))
         
         mainFrame = tb.Frame(master=self.newWindow, padding=5)
         mainFrame.pack(fill='both', expand=True, padx=10, pady=10)
