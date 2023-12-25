@@ -23,6 +23,7 @@ class NotePopup:
         self.note_text = tb.Text(master=self.data_container, height=5)
         self.note_text.insert(tb.END, self.objectdata['notas'])
         self.note_text.pack(**self.common_options_btm)
+        self.note_text.config(state='disabled')
         
         self.control_frame = tb.LabelFrame(master=self.main_container, text='Acciones')
         self.control_frame.pack(**self.common_options_btm)        

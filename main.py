@@ -7,7 +7,6 @@ from interfaz.componentes.toolbar import Toolbar
 from logica.populateList import PopulateManager
 from logica.getDataLogic import getData
 
-
 root = tb.Window(themename="superhero")
 root.title("Electrostock")
 wid = 1050
@@ -15,9 +14,10 @@ hei = 1000
 root.geometry(f"{wid}x{hei}")
 root.update_idletasks()
 root.withdraw()
-root.geometry(f"+{(root.winfo_screenwidth() - wid) // 2}+{(root.winfo_screenheight() - hei) // 2}")
+root.geometry(
+    f"+{(root.winfo_screenwidth() - wid) // 2}+{(root.winfo_screenheight() - hei) // 2}"
+)
 root.deiconify()
-
 
 # sizing variables
 sml_padding = 10
@@ -49,7 +49,9 @@ Toolbar(fr_left_toolbar, root, sf_info_items)
 PopulateManager(sf_info_items, getData()).visualize_all()
 
 
-status_lbl = tb.Label(master=fr_statusbar, text="ElectroStock - vadikz@gmail.com - 2023")
+status_lbl = tb.Label(
+    master=fr_statusbar, text="ElectroStock - vadikz@gmail.com - 2023"
+)
 status_lbl.pack(anchor="e", expand=True, fill="x")
 
 

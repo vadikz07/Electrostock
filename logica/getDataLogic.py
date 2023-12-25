@@ -4,6 +4,18 @@ from logica.BrowserLogic import validate_url
 
 filepath_json = "data/itemlists.json"
 
+def delete_item(uuid_to_delete:str):
+    print(f'Buscando item {uuid_to_delete}')
+    data_to_keep = []
+    full_data = getData()
+    for d in full_data:
+        if d['uuid'] != uuid_to_delete:
+            data_to_keep.append(d)
+    overwrite_db(data_to_keep)
+    
+def overwrite_db(newdata:list):
+    with open(filepath_json, 'w') as json_file:
+        json.dump(newdata, json_file)
 
 def getData() -> list:
     with open(file="data/itemlists.json", mode="r") as file:
