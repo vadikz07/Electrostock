@@ -26,6 +26,7 @@ data_arr ejemplo de estructura:
 md_padd = 10
 
 class ItemShow:
+    all_items = []
     def __init__(self, par, data_dict, isEmpty=False, boxnum=0, warn=False) -> None:
         self.isEmpty = isEmpty
         self.boxnum = boxnum
@@ -106,3 +107,12 @@ class ItemShow:
         sepa = tb.Separator(par, orient="horizontal", bootstyle="dark")
         sepa.pack(side='top', fill='x', pady=4,expand=True)
         
+    @classmethod
+    def retrieve_box_num_contents(cls,boxnum:int) -> list:
+        pass
+    
+    @classmethod
+    def retrieve_all_items(cls):
+        return cls.all_items
+    
+    

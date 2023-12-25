@@ -168,7 +168,7 @@ class NewItemForm:
         )
         self.status_lbl.pack(anchor="center", fill="x", expand=True)
 
-        self.debug_data()
+        # self.debug_data()
 
     # def debug_data(self):
     #     self.boxnum_ent.set(66)
@@ -179,6 +179,7 @@ class NewItemForm:
     #     self.cant_max_entry_var.set(50)
     #     self.dsheet_ent_var.set("http://www.google.es")
     #     self.notes_text.insert("1.0", "Prueba de notas")
+        
 
     def collect_data(self) -> dict:
         print(f"Ejecutando collect data")
@@ -192,7 +193,10 @@ class NewItemForm:
         data_dict["datasheet"] = self.dsheet_ent_var.get()
         data_dict["notas"] = self.notes_text.get("1.0", "end-1c")
         data_dict["fechaInsercion"] = self.testdate.entry.get()
-        data_dict["localizacion"] = int(self.boxnum_ent.get())
+        try:
+            data_dict["localizacion"] = int(self.boxnum_ent.get())
+        except ValueError:
+            data_dict["localizacion"] = ""
 
         if validateData(
             data_dict

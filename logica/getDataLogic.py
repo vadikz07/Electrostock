@@ -49,8 +49,13 @@ def validateData(datadict: dict):
     )
     b_datasheet_ok = validate_url(datadict["datasheet"])
     b_notas_ok = 5 <= len(datadict["notas"]) <= MAX_LEN_NOTES_FULL
+    try:
+        localizacion_var = int(datadict["localizacion"])
+    except ValueError:
+        localizacion_var = 0
+        
     b_localizacion_ok = (
-        1 <= int(datadict["localizacion"]) <= 99
+        1 <= localizacion_var <= 99
         and type(datadict["localizacion"]) == int
     )
 
