@@ -197,7 +197,7 @@ class NewItemForm:
 
         if validateData(
             data_dict
-        ):  # TODO: Insertar algun print en el return de validateData
+        ):  
             self.result_save = saveData(data_dict)
             self.status_lbl_var.set("Datos insertados correctamente")
             if self.result_save:

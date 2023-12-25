@@ -4,14 +4,39 @@ from logica.BrowserLogic import validate_url
 
 filepath_json = "data/itemlists.json"
 
-def delete_item(uuid_to_delete:str):
+def delete_item(uuid_to_delete:str, appendNew=False, appendData={}):
     print(f'Buscando item {uuid_to_delete}')
     data_to_keep = []
     full_data = getData()
     for d in full_data:
         if d['uuid'] != uuid_to_delete:
             data_to_keep.append(d)
+    if not appendNew:
+        overwrite_db(data_to_keep)
+    else:
+        data_to_keep.append(appendData)
     overwrite_db(data_to_keep)
+
+def modify_item(uuid_to_modify:str, new_data:dict):
+    #TODO: Completar funcion para modificar objetos
+    print(f'Modificando contenidos del objeto {uuid_to_modify}')
+    #buscar en el fichero json el UUID del objeto
+    item_to_mod = retrieve_item(uuid_to_modify)
+    for entry in item_to_mod: #entry es 'uuid' 'nombre' 'modelo' ... etc
+        try:
+            item_to_mod[entry] = new_data[entry]
+            print(f'{entry.upper()} -> Valor actualizado')
+        except KeyError:
+            print(f'{entry.upper()} -> Valor vacio, no se actualiza')
+    delete_item(uuid_to_modify, appendNew=True, appendData=item_to_mod)
+    
+    
+def retrieve_item(uuid_target:str) -> dict:
+    full_data = getData()
+    for d in full_data:
+        if d['uuid'] == uuid_target:
+            return d
+    return {}
     
 def overwrite_db(newdata:list):
     with open(filepath_json, 'w') as json_file:

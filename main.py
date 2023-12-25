@@ -5,7 +5,7 @@ from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.toolbar import Toolbar
 
 from logica.populateList import PopulateManager
-from logica.getDataLogic import getData
+from logica.getDataLogic import getData, modify_item
 
 root = tb.Window(themename="superhero")
 root.title("Electrostock")
@@ -58,5 +58,18 @@ status_lbl.pack(anchor="e", expand=True, fill="x")
 root.update()
 root.mainloop()
 
+modify_item('24330628-a835-4777-8661-c17e4cc26180',{
+    "uuid": "24330628-a835-4777-8661-c17e4cc26180",
+    "nombre": "Prueba mod",
+    "modelo": "Probando",
+    "fabricante": "",
+    "cantidad": "11",
+    "cantidadAviso": "10",
+    "cantidadMaxima": "100",
+    "datasheet": "",
+    "notas": "Interruptores variados, incluye SMD, de palanca, y mecanicos de teclado.",
+    "fechaInsercion": "25/12/2023",
+    "localizacion": 1
+  })
 
 root.mainloop()
