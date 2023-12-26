@@ -19,7 +19,7 @@ def delete_item(uuid_to_delete:str, appendNew=False, appendData={}, par=None, po
         else:
             data_to_keep.append(appendData)
         overwrite_db(data_to_keep)
-    popmanagerRef.clear_children()
+    
 
 def modify_item(uuid_to_modify:str, new_data:dict):
     #TODO: Completar funcion para modificar objetos

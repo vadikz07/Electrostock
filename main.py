@@ -41,7 +41,7 @@ fr_statusbar = tb.Frame(master=root, relief="sunken", padding=sml_padding)
 fr_statusbar.pack(fill="x", side="bottom", anchor="s")
 
 # Insercion item desde itemslist al arrancar el programa
-popmanager = PopulateManager(sf_info_items, getData())
+popmanager = PopulateManager(sf_info_items)
 popmanager.visualize_all()
 
 

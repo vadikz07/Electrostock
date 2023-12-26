@@ -4,16 +4,16 @@ from fuzzywuzzy import fuzz
     
 class PopulateManager:
     precision_search = 70 #ratio requerido para considerar un match
-    def __init__(self, frame, data_dict=None) -> None:
+    def __init__(self, frame) -> None:
         self.items = getData()
         self.frame = frame
-    #TODO: Buscar referencias del itemshow
     def clear_children(self):
         for child in self.frame.winfo_children():
             child.destroy()
     
     def visualize_all(self):
         self.clear_children()
+        self.items = getData()
         for data_item in self.items:
             ItemShow(self.frame, data_item,popmanagerRef=self)
     

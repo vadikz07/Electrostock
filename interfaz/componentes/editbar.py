@@ -27,7 +27,7 @@ class EditBar:
         else:
             btn_notes.config(state="disabled")
 
-        btn_del = tb.Button(master=par, text="Borrar", bootstyle="danger", command=lambda: delete_item(self.objectdata['uuid'],par=par,popmanagerRef=popmanagerRef) )
+        btn_del = tb.Button(master=par, text="Borrar", bootstyle="danger", command=lambda: (delete_item(self.objectdata['uuid'],par=par), popmanagerRef.visualize_all()) )
         btn_del.pack()
 
         if self.isEmpty:
