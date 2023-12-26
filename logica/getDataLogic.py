@@ -1,21 +1,24 @@
 import json
 from logica.constants_data import *
 from logica.BrowserLogic import validate_url
+from interfaz.componentes.warning import WarningWindow
 
 filepath_json = "data/itemlists.json"
 
-def delete_item(uuid_to_delete:str, appendNew=False, appendData={}):
-    print(f'Buscando item {uuid_to_delete}')
-    data_to_keep = []
-    full_data = getData()
-    for d in full_data:
-        if d['uuid'] != uuid_to_delete:
-            data_to_keep.append(d)
-    if not appendNew:
+def delete_item(uuid_to_delete:str, appendNew=False, appendData={}, par=None):
+    answer = WarningWindow(par=par,msg='¿Seguro que quieres borrar esta entrada?').return_response()
+    if answer:    
+        print(f'Buscando item {uuid_to_delete}')
+        data_to_keep = []
+        full_data = getData()
+        for d in full_data:
+            if d['uuid'] != uuid_to_delete:
+                data_to_keep.append(d)
+        if not appendNew:
+            overwrite_db(data_to_keep)
+        else:
+            data_to_keep.append(appendData)
         overwrite_db(data_to_keep)
-    else:
-        data_to_keep.append(appendData)
-    overwrite_db(data_to_keep)
 
 def modify_item(uuid_to_modify:str, new_data:dict):
     #TODO: Completar funcion para modificar objetos
@@ -76,7 +79,7 @@ def validateData(datadict: dict):
     if datadict["fabricante"] == '':
         b_maker_ok = True
     else:
-        b_maker_ok = 3 <= len(datadict["fabricante"]) <= 30
+        b_maker_ok = 3 <= len(datadict["fabricante"]) <= 15
     try:
         b_cantidad_ok = 1 <= int(datadict["cantidad"]) <= 999
     except ValueError:

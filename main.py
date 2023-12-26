@@ -40,13 +40,15 @@ sf_info_items.pack(fill="both", expand=True, padx=10, pady=10, anchor="nw")
 fr_statusbar = tb.Frame(master=root, relief="sunken", padding=sml_padding)
 fr_statusbar.pack(fill="x", side="bottom", anchor="s")
 
+# Insercion item desde itemslist al arrancar el programa
+popmanager = PopulateManager(sf_info_items, getData())
+popmanager.visualize_all()
+
+
 # Widgets del navbar
 NavBarTop(fr_navbar, sf_info_items)
 Toolbar(fr_left_toolbar, root, sf_info_items)
 
-
-# Insercion item desde itemslist al arrancar el programa
-PopulateManager(sf_info_items, getData()).visualize_all()
 
 
 status_lbl = tb.Label(
@@ -58,18 +60,18 @@ status_lbl.pack(anchor="e", expand=True, fill="x")
 root.update()
 root.mainloop()
 
-modify_item('24330628-a835-4777-8661-c17e4cc26180',{
-    "uuid": "24330628-a835-4777-8661-c17e4cc26180",
-    "nombre": "Prueba mod",
-    "modelo": "Probando",
-    "fabricante": "",
-    "cantidad": "11",
-    "cantidadAviso": "10",
-    "cantidadMaxima": "100",
-    "datasheet": "",
-    "notas": "Interruptores variados, incluye SMD, de palanca, y mecanicos de teclado.",
-    "fechaInsercion": "25/12/2023",
-    "localizacion": 1
-  })
+# modify_item('24330628-a835-4777-8661-c17e4cc26180',{
+#     "uuid": "24330628-a835-4777-8661-c17e4cc26180",
+#     "nombre": "Prueba mod",
+#     "modelo": "Probando",
+#     "fabricante": "",
+#     "cantidad": "11",
+#     "cantidadAviso": "10",
+#     "cantidadMaxima": "100",
+#     "datasheet": "",
+#     "notas": "Interruptores variados, incluye SMD, de palanca, y mecanicos de teclado.",
+#     "fechaInsercion": "25/12/2023",
+#     "localizacion": 1
+#   })
 
 root.mainloop()

@@ -27,7 +27,7 @@ md_padd = 10
 
 class ItemShow:
     all_items = []
-    def __init__(self, par, data_dict, isEmpty=False, boxnum=0, warn=False) -> None:
+    def __init__(self, par, data_dict, isEmpty=False, boxnum=0, warn=False, popmanagerRef=None) -> None:
         self.isEmpty = isEmpty
         self.boxnum = boxnum
         self.warn = warn
@@ -106,7 +106,7 @@ class ItemShow:
             
         control_frame = tb.Frame(master=item_frame_lower, bootstyle='dark')
         control_frame.pack(side="bottom", fill='both', expand=True)
-        EditBar(par=control_frame,stickto='e',isEmpty=isEmpty,objectdata=data_dict)
+        EditBar(par=control_frame,stickto='e',isEmpty=isEmpty,objectdata=data_dict,popmanagerRef=popmanagerRef)
         #Separador para el siguiente objeto
         sepa = tb.Separator(par, orient="horizontal", bootstyle="dark")
         sepa.pack(side='top', fill='x', pady=4,expand=True)

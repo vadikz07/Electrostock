@@ -7,7 +7,7 @@ from logica.getDataLogic import *
 
 
 class EditBar:
-    def __init__(self, par, stickto, isEmpty=False, objectdata=None) -> None:
+    def __init__(self, par, stickto, isEmpty=False, objectdata=None, popmanagerRef=None) -> None:
         self.isEmpty = isEmpty
         self.objectdata = objectdata
         common_settings = {"side": "left", "fill": "x", "expand": True}
@@ -27,7 +27,7 @@ class EditBar:
         else:
             btn_notes.config(state="disabled")
 
-        btn_del = tb.Button(master=par, text="Borrar", bootstyle="danger", command=lambda: delete_item(self.objectdata['uuid']))
+        btn_del = tb.Button(master=par, text="Borrar", bootstyle="danger", command=lambda: delete_item(self.objectdata['uuid'],par=par))
         btn_del.pack()
 
         if self.isEmpty:
