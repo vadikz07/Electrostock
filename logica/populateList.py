@@ -15,13 +15,13 @@ class PopulateManager:
     def visualize_all(self):
         self.clear_children()
         for data_item in self.items:
-            ItemShow(self.frame, data_item, popmanagerRef=self)
+            ItemShow(self.frame, data_item,popmanagerRef=self)
     
     def visualize_low_qty(self):
         self.clear_children()
         items_low = [item for item in self.items if item['cantidad'] < item['cantidadAviso']]
         for item_l in items_low:
-            ItemShow(self.frame, item_l,warn=True, popmanagerRef=self)
+            ItemShow(self.frame, item_l,warn=True,popmanagerRef=self)
             
     def organize_by(self, sortby:str):
         self.clear_children()

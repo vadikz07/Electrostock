@@ -5,7 +5,7 @@ from interfaz.componentes.warning import WarningWindow
 
 filepath_json = "data/itemlists.json"
 
-def delete_item(uuid_to_delete:str, appendNew=False, appendData={}, par=None):
+def delete_item(uuid_to_delete:str, appendNew=False, appendData={}, par=None, popmanagerRef=None):
     answer = WarningWindow(par=par,msg='¿Seguro que quieres borrar esta entrada?').return_response()
     if answer:    
         print(f'Buscando item {uuid_to_delete}')
@@ -19,6 +19,7 @@ def delete_item(uuid_to_delete:str, appendNew=False, appendData={}, par=None):
         else:
             data_to_keep.append(appendData)
         overwrite_db(data_to_keep)
+    popmanagerRef.clear_children()
 
 def modify_item(uuid_to_modify:str, new_data:dict):
     #TODO: Completar funcion para modificar objetos
