@@ -3,9 +3,7 @@ from ttkbootstrap.scrolled import ScrolledFrame
 from ttkbootstrap.constants import *
 from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.toolbar import Toolbar
-
 from logica.populateList import PopulateManager
-from logica.getDataLogic import getData, modify_item
 
 root = tb.Window(themename="superhero")
 root.title("Electrostock")

@@ -1,10 +1,8 @@
 #TODO: Comenzar interfaz para editar ficheros, utilizar newItemForm como plantilla.
 from tkinter import *
 import ttkbootstrap as tb
-from logica.InsertionManager import InsertionManager
 from logica.getDataLogic import *
-from logica.getDataLogic import getData, modify_item, validateData
-from uuid import uuid4
+from logica.getDataLogic import modify_item, validateData
 
 class EditItemForm:
     x_padd = 5
