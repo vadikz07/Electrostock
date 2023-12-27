@@ -26,6 +26,9 @@ class NavBarTop:
         btn_showFew = tb.Button(master=navbar_frame, text='Mostrar avisos', bootstyle='warning', command=lambda: PopulateManager(sframe_ref).visualize_low_qty())
         btn_showFew.pack(**common_left)
         
+        btn_clearSearchbar = tb.Button(master=navbar_frame, text='X',bootstyle='danger', command=lambda:value_searchBar.set(''))
+        btn_clearSearchbar.pack(**common_right)
+        
         btn_commitSearch = tb.Button(master=navbar_frame, text='Buscar', command=lambda: PopulateManager(sframe_ref).search_item(ent_searchBar.get(), int(precision_slider.get())))
         btn_commitSearch.pack(**common_right)
         
@@ -36,7 +39,7 @@ class NavBarTop:
         
         #Resolucion de busqueda
         def slider(e):
-            precision_lbl.config(text=f'{int(precision_slider.get())}')
+            precision_lbl.config(text=f'Precision: {int(precision_slider.get())}')
             
         precision_slider = tb.Scale(master=navbar_frame, orient='horizontal', length=135, from_=35, to=100, value=70, command=slider)
         precision_slider.pack(**common_right, padx=10)

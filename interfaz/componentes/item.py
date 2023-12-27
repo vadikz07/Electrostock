@@ -24,7 +24,7 @@ data_arr ejemplo de estructura:
 
 """
 md_padd = 10
-
+#TODO: Boton para mostrar imagen del objeto, lo ideal seria un enlace a una imagen web.
 class ItemShow:
     all_items = []
     def __init__(self, par, data_dict, isEmpty=False, boxnum=0, warn=False, popmanagerRef=None) -> None:

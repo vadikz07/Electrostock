@@ -15,7 +15,6 @@ class EditBar:
         self.objectdata = objectdata
         common_settings = {"side": "left", "fill": "x", "expand": True}
 
-        # TODO: Añadir funcionalidad para editar campos (abrir nueva ventana)
         btn_edit = tb.Button(
             master=par,
             text="Editar",

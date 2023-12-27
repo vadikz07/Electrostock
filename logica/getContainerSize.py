@@ -1,9 +1,9 @@
 def get_container_size(num): 
     # tuples => minimo maximo
-    xxl = (1,12) 
-    l = (13,24)
-    m = (25,48)
-    s = (48,99)
+    xxl = (1,8) 
+    l = (9,32)
+    m = (33,50)
+    s = (51,99)
     match num:
         case num if xxl[0]<= num <= xxl[1]:
             return "XL"
