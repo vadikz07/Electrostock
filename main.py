@@ -42,7 +42,7 @@ fr_statusbar.pack(fill="x", side="bottom", anchor="s")
 
 # Insercion item desde itemslist al arrancar el programa
 popmanager = PopulateManager(sf_info_items)
-popmanager.visualize_all()
+popmanager.organize_by('num')
 
 
 # Widgets del navbar

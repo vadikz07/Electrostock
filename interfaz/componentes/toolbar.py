@@ -34,7 +34,7 @@ class Toolbar:
         )
         btn_sortNum.pack(**common_settings)
 
-        btn_export = tb.Button(master=container, text="Exportar")
+        btn_export = tb.Button(master=container, text="Exportar", state='disabled')
         btn_export.pack(**common_settings)
 
         btn_genThumb = tb.Button(
