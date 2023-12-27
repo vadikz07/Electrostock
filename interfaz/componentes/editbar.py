@@ -3,6 +3,7 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.popupNotes import NotePopup
 from interfaz.componentes.editItemForm import EditItemForm
+from interfaz.componentes.previewImg import PreviewWindow
 from logica.constants_data import *
 from logica.getDataLogic import *
 
@@ -19,7 +20,9 @@ class EditBar:
             master=par,
             text="Editar",
             command=lambda: EditItemForm(
-                par=par, uuid_to_modify=self.objectdata["uuid"],popmanagerRef=popmanagerRef
+                par=par,
+                uuid_to_modify=self.objectdata["uuid"],
+                popmanagerRef=popmanagerRef,
             ),
         )
         btn_edit.pack(**common_settings)
@@ -30,6 +33,19 @@ class EditBar:
             command=lambda: NotePopup(par, self.objectdata),
         )
         btn_notes.pack(**common_settings)
+
+        btn_see_img = tb.Button(
+            master=par,
+            text="Ver imagen",
+            bootstyle="info",
+            command=lambda: PreviewWindow(
+                par=par,
+                uuid_to_modify=self.objectdata["uuid"],
+                popmanagerRef=popmanagerRef,
+            ),
+        )
+        btn_see_img.pack(**common_settings)
+
         # si la longitud de las notas es menor a MAX_LEN_NOTES (45), desactivar boton
         if len(self.objectdata["notas"]) > MAX_LEN_NOTES:
             btn_notes.config(state="enabled")
@@ -42,7 +58,7 @@ class EditBar:
             bootstyle="danger",
             command=lambda: (
                 delete_item(self.objectdata["uuid"], par=par),
-                popmanagerRef.organize_by('num'),
+                popmanagerRef.organize_by("num"),
             ),
         )
         btn_del.pack()

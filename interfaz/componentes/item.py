@@ -103,7 +103,7 @@ class ItemShow:
             lbl_date.pack(side='right', anchor='e')
             
             
-            
+        #TODO: Insertar boton para abrir en ventana nueva la imagen del item actual.
         control_frame = tb.Frame(master=item_frame_lower, bootstyle='dark')
         control_frame.pack(side="bottom", fill='both', expand=True)
         EditBar(par=control_frame,stickto='e',isEmpty=isEmpty,objectdata=data_dict,popmanagerRef=popmanagerRef)
