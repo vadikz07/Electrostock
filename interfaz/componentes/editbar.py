@@ -65,5 +65,6 @@ class EditBar:
 
         if self.isEmpty:
             btn_notes.config(state="disabled")
+            btn_see_img.config(state='disabled')
             btn_edit.config(state="disabled")
             btn_del.config(state="disabled")

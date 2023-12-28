@@ -10,8 +10,11 @@ root.title("Electrostock")
 wid = 1050
 hei = 1000
 root.geometry(f"{wid}x{hei}")
-root.update_idletasks()
-root.withdraw()
+
+#NOTE: Quitados estas dos metodos de root, alto impacto en rendimiento.
+# root.update_idletasks()
+# root.withdraw()
+
 root.geometry(
     f"+{(root.winfo_screenwidth() - wid) // 2}+{(root.winfo_screenheight() - hei) // 2}"
 )
