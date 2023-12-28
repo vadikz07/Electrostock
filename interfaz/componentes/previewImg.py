@@ -36,6 +36,7 @@ class PreviewWindow:
         self.original_data = retrieve_item(uuid_target=self.uuid_to_modify)
         self.newWindow = tk.Toplevel(self.root)
         self.newWindow.title('Imagen')
+        self.newWindow.config(padx=20, pady=20)
         self.maincontainer = tb.Frame(master=self.newWindow)
         self.maincontainer.pack(**self.common_options_pack)
         self.labeltext = tb.LabelFrame(master=self.maincontainer, text=f'{self.original_data["nombre"]}: {self.original_data["modelo"]}')

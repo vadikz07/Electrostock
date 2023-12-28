@@ -45,6 +45,8 @@ class EditBar:
             ).show_image(),
         )
         btn_see_img.pack(**common_settings)
+        if self.objectdata['imagen'] == '':
+            btn_see_img.config(state='disabled')
 
         # si la longitud de las notas es menor a MAX_LEN_NOTES (45), desactivar boton
         if len(self.objectdata["notas"]) > MAX_LEN_NOTES:
