@@ -98,7 +98,7 @@ def validateData(datadict: dict):
     else:
         b_datasheet_ok = validate_url(datadict["datasheet"])
 
-    b_notas_ok = 5 <= len(datadict["notas"]) <= MAX_LEN_NOTES_FULL
+    b_notas_ok = 5 <= len(datadict["notas"]) <= MAX_LEN_NOTES_FULL or datadict['notas'] == ''
 
     try:
         localizacion_var = int(datadict["localizacion"])
