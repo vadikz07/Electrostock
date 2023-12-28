@@ -3,6 +3,7 @@ from logica.getDataLogic import getData
 from fuzzywuzzy import fuzz
     
 class PopulateManager:
+    #TODO: Implementar funcionalidad para buscar todos los objetos de un cajon (por numero)
     precision_search = 70 #ratio requerido para considerar un match
     def __init__(self, frame) -> None:
         self.items = getData()

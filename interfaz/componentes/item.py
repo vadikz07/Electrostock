@@ -24,7 +24,6 @@ data_arr ejemplo de estructura:
 
 """
 md_padd = 10
-#TODO: Boton para mostrar imagen del objeto, lo ideal seria un enlace a una imagen web.
 class ItemShow:
     all_items = []
     def __init__(self, par, data_dict, isEmpty=False, boxnum=0, warn=False, popmanagerRef=None) -> None:
@@ -103,7 +102,6 @@ class ItemShow:
             lbl_date.pack(side='right', anchor='e')
             
             
-        #TODO: Insertar boton para abrir en ventana nueva la imagen del item actual.
         control_frame = tb.Frame(master=item_frame_lower, bootstyle='dark')
         control_frame.pack(side="bottom", fill='both', expand=True)
         EditBar(par=control_frame,stickto='e',isEmpty=isEmpty,objectdata=data_dict,popmanagerRef=popmanagerRef)

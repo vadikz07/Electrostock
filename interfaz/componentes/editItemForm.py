@@ -1,4 +1,3 @@
-#TODO: Comenzar interfaz para editar ficheros, utilizar newItemForm como plantilla.
 from tkinter import *
 import ttkbootstrap as tb
 from logica.getDataLogic import *
