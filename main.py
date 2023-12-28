@@ -1,6 +1,6 @@
 import ttkbootstrap as tb
 from ttkbootstrap.scrolled import ScrolledFrame
-from ttkbootstrap.constants import *    
+from ttkbootstrap.constants import *
 from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.toolbar import Toolbar
 from logica.populateList import PopulateManager
@@ -40,13 +40,12 @@ fr_statusbar.pack(fill="x", side="bottom", anchor="s")
 
 # Insercion item desde itemslist al arrancar el programa
 popmanager = PopulateManager(sf_info_items)
-popmanager.organize_by('num')
+popmanager.organize_by("num")
 
 
 # Widgets del navbar
 NavBarTop(fr_navbar, sf_info_items)
 Toolbar(fr_left_toolbar, root, sf_info_items)
-
 
 
 status_lbl = tb.Label(
@@ -58,18 +57,5 @@ status_lbl.pack(anchor="e", expand=True, fill="x")
 root.update()
 root.mainloop()
 
-# modify_item('24330628-a835-4777-8661-c17e4cc26180',{
-#     "uuid": "24330628-a835-4777-8661-c17e4cc26180",
-#     "nombre": "Prueba mod",
-#     "modelo": "Probando",
-#     "fabricante": "",
-#     "cantidad": "11",
-#     "cantidadAviso": "10",
-#     "cantidadMaxima": "100",
-#     "datasheet": "",
-#     "notas": "Interruptores variados, incluye SMD, de palanca, y mecanicos de teclado.",
-#     "fechaInsercion": "25/12/2023",
-#     "localizacion": 1
-#   })
 
 root.mainloop()

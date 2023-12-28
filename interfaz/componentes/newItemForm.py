@@ -54,10 +54,19 @@ class NewItemForm:
         self.maker_ent.pack(side="left", fill="x", expand=True, anchor="w")
         self.list_entry_widgets.append(self.maker_ent_var)
 
+        self.img_lblframe = tb.LabelFrame(master=self.main_container, text="URL Imagen")
+        self.img_lblframe.grid(row=3, column=0, columnspan=2, sticky="ew")
+        self.img_ent_var = StringVar()
+        self.img_ent = tb.Entry(
+            master=self.img_lblframe, textvariable=self.img_ent_var
+        )
+        self.img_ent.pack(side="left", fill="x", expand=True, anchor="w")
+        self.list_entry_widgets.append(self.img_ent_var)
+
 
         # Cantidades en un frame propio
         self.cant_frame = tb.LabelFrame(master=self.main_container, text="Cantidad")
-        self.cant_frame.grid(row=3, column=0, columnspan=2, sticky="ew")
+        self.cant_frame.grid(row=4, column=0, columnspan=2, sticky="ew")
         # Hijos de cant-frame
         self.cant_act_lblframe = tb.LabelFrame(master=self.cant_frame, text="Actual")
         # self.cant_act_lblframe.grid(row=0, column=0)
@@ -97,7 +106,7 @@ class NewItemForm:
         self.dsheet_lblframe = tb.LabelFrame(
             master=self.main_container, text="Datasheet"
         )
-        self.dsheet_lblframe.grid(row=4, column=0, columnspan=2, sticky="ew")
+        self.dsheet_lblframe.grid(row=5, column=0, columnspan=2, sticky="ew")
         self.dsheet_ent_var = StringVar()
         self.dsheet_ent = tb.Entry(
             master=self.dsheet_lblframe, textvariable=self.dsheet_ent_var
@@ -106,7 +115,7 @@ class NewItemForm:
         self.list_entry_widgets.append(self.dsheet_ent_var)
 
         self.notes_lblframe = tb.LabelFrame(master=self.main_container, text="Notas")
-        self.notes_lblframe.grid(row=5, column=0, columnspan=2, sticky="ew")
+        self.notes_lblframe.grid(row=6, column=0, columnspan=2, sticky="ew")
         self.notes_scroll = tb.Scrollbar(
             master=self.notes_lblframe, orient="vertical", bootstyle="success round"
         )
@@ -121,7 +130,7 @@ class NewItemForm:
         self.date_lblframe = tb.LabelFrame(
             master=self.main_container, text="Fecha insercion"
         )
-        self.date_lblframe.grid(row=6, column=0, columnspan=2, sticky="ew")
+        self.date_lblframe.grid(row=7, column=0, columnspan=2, sticky="ew")
         self.testdate = tb.DateEntry(
             self.date_lblframe, bootstyle="info", firstweekday=0
         )
@@ -183,6 +192,7 @@ class NewItemForm:
         data_dict["uuid"] = str(uuid4())
         data_dict["nombre"] = self.name_ent_var.get()
         data_dict["modelo"] = self.model_ent_var.get()
+        data_dict["imagen"] = self.img_ent_var.get()
         data_dict["fabricante"] = self.maker_ent_var.get()
         data_dict["cantidad"] = self.cant_act_entry_var.get()
         data_dict["cantidadAviso"] = self.cant_warn_entry_var.get()

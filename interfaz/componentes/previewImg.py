@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 
 
 class PhotoImageLabel(tb.Label):
-    max_size = (250,250)
+    max_size = (300,300)
     def __init__(self, parent, **kwargs):
         image = Image.open(kwargs['image'])
         image.thumbnail(self.max_size)
@@ -26,18 +26,23 @@ class PreviewWindow:
         self.original_data = retrieve_item(uuid_target=self.uuid_to_modify)
         self.newWindow = tk.Toplevel(self.root)
         self.newWindow.title('Imagen')
-        self.newWindow.geometry('400x450')
-        self.maincontainer = tk.Frame(master=self.newWindow)
+        self.newWindow.geometry('450x400')
+        self.maincontainer = tb.Frame(master=self.newWindow)
         self.maincontainer.pack(**self.common_options_pack)
         self.labeltext = tb.LabelFrame(master=self.maincontainer, text=f'{self.original_data["nombre"]}: {self.original_data["modelo"]}')
         self.labeltext.pack(**self.common_options_pack)
+
+
         
-        self.control_lblframe = tb.LabelFrame(master=self.maincontainer, text='Acciones')
-        self.control_lblframe.pack(**self.common_options_pack)
         
-        self.mod_url_img_btn = tb.Button(master=self.control_lblframe, text='Modificar URL imagen')
-        self.mod_url_img_btn.pack(**self.common_options_pack)
+        # self.control_lblframe = tb.LabelFrame(master=self.maincontainer, text='Acciones')
+        # self.control_lblframe.pack(**self.common_options_pack)
+        
+        # self.mod_url_img_btn = tb.Button(master=self.control_lblframe, text='Modificar URL imagen')
+        # self.mod_url_img_btn.pack(**self.common_options_pack)
 
     def show_image(self):
         self.photo_label = PhotoImageLabel(self.labeltext, image='data/imgs/Retro.png')
         self.photo_label.pack()
+        self.url_lbl = tb.Label(master=self.labeltext, text=f'URL: {self.original_data["imagen"]}')
+        self.url_lbl.pack()
