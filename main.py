@@ -1,6 +1,6 @@
 import ttkbootstrap as tb
 from ttkbootstrap.scrolled import ScrolledFrame
-from ttkbootstrap.constants import *
+from ttkbootstrap.constants import *    
 from interfaz.componentes.navbar import NavBarTop
 from interfaz.componentes.toolbar import Toolbar
 from logica.populateList import PopulateManager

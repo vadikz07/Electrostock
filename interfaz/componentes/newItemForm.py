@@ -1,6 +1,6 @@
 from tkinter import *
 import ttkbootstrap as tb
-from logica.InsertionManager import InsertionManager
+from logica.cli_wizard import Wololo
 from logica.getDataLogic import *
 from logica.getDataLogic import validateData
 from uuid import uuid4
@@ -148,7 +148,7 @@ class NewItemForm:
             master=self.control_lblframe,
             text="CLI",
             bootstyle="info",
-            command=lambda: InsertionManager().wizard_cli(),
+            command=lambda: Wololo().main_wizard()
         )
         self.cli_btn.pack(side="right", padx=(5, 0), anchor="e", fill="x")
 

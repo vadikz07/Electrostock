@@ -42,7 +42,7 @@ class EditBar:
                 par=par,
                 uuid_to_modify=self.objectdata["uuid"],
                 popmanagerRef=popmanagerRef,
-            ),
+            ).show_image(),
         )
         btn_see_img.pack(**common_settings)
 
