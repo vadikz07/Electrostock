@@ -78,3 +78,9 @@ class PopulateManager:
                 boxnum=empty_num,
                 warn=False,
             )
+    def retrieve_item(self, uuid_target):
+        for item in self.all_items:
+            if item['uuid'] == uuid_target:
+                return item
+        return {}
+    
