@@ -1,3 +1,4 @@
 output_images/
 .vscode/
 __pycache__/
+**/*.pyc
