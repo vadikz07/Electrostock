@@ -84,3 +84,11 @@ class PopulateManager:
                 return item
         return {}
     
+    def remove_item_list(self, uuid_target):
+        #buscar indice del objeto usando self.retrieve_item
+        target_idx = -1
+        for idx,item in enumerate(self.all_items):
+            if item['uuid'] == uuid_target:
+                target_idx = idx
+        self.all_items.pop(target_idx)
+        self.organize_by('num')

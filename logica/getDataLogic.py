@@ -10,7 +10,8 @@ def delete_item(uuid_to_delete:str, appendNew=False, appendData={}, par=None, po
     if answer:    
         print(f'Buscando item {uuid_to_delete}')
         data_to_keep = []
-        full_data = getData()
+        #FIXME: Sustituir por popmanager.allitems
+        full_data = popmanagerRef.all_items
         for d in full_data:
             if d['uuid'] != uuid_to_delete:
                 data_to_keep.append(d)
@@ -31,7 +32,7 @@ def modify_item(uuid_to_modify:str, new_data:dict, popmanagerRef=None):
             print(f'{entry.upper()} -> Valor actualizado')
         except KeyError:
             print(f'{entry.upper()} -> Valor vacio, no se actualiza')
-    delete_item(uuid_to_modify, appendNew=True, appendData=item_to_mod,wrnMessage='¿Quieres actualizar los datos?')
+    delete_item(uuid_to_modify, appendNew=True, appendData=item_to_mod,wrnMessage='¿Quieres actualizar los datos?', popmanagerRef=popmanagerRef)
     
     
 def overwrite_db(newdata:list):
@@ -45,8 +46,9 @@ def getData() -> list:
     return json_content
 
 
-def saveData(datadict_to_insert: dict) -> bool:
+def saveData(datadict_to_insert: dict, popmanagerRef=None) -> bool:
     # comprobar si existe el fichero json, si esta, leerlo
+    popmanagerRef.all_items.append(datadict_to_insert)
     try:
         with open(filepath_json, "r") as file:
             contents = json.load(file)

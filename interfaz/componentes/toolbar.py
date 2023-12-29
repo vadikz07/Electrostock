@@ -52,7 +52,7 @@ class Toolbar:
             master=container,
             text="Añadir objeto",
             bootstyle="success",
-            command=lambda: NewItemForm(par),
+            command=lambda: NewItemForm(par, popmanagerRef=popmanagerRef),
         )
         btn_addNew.pack(**common_settings)
 
