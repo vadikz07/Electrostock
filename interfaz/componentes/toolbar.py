@@ -6,8 +6,8 @@ from logica.populateList import PopulateManager
 
 
 class Toolbar:
-    def __init__(self, par, root, infoframe=None) -> None:
-        self.root = root
+    def __init__(self, par, popmanagerRef: PopulateManager, rootRef) -> None:
+        self.rootRef = rootRef
         common_settings = {
             "side": "top",
             "fill": "x",
@@ -22,18 +22,18 @@ class Toolbar:
         btn_sortName = tb.Button(
             master=container,
             text="Org. Nombre",
-            command=lambda: PopulateManager(infoframe).organize_by("name"),
+            command=lambda: popmanagerRef.organize_by("name"),
         )
         btn_sortName.pack(**common_settings)
 
         btn_sortNum = tb.Button(
             master=container,
             text="Org. Numero",
-            command=lambda: PopulateManager(infoframe).organize_by("num"),
+            command=lambda: popmanagerRef.organize_by("num"),
         )
         btn_sortNum.pack(**common_settings)
 
-        btn_export = tb.Button(master=container, text="Exportar", state='disabled')
+        btn_export = tb.Button(master=container, text="Exportar", state="disabled")
         btn_export.pack(**common_settings)
 
         btn_genThumb = tb.Button(
@@ -52,7 +52,7 @@ class Toolbar:
             master=container,
             text="Añadir objeto",
             bootstyle="success",
-            command=lambda: NewItemForm(par),
+            command=lambda: NewItemForm(par, popmanagerRef=popmanagerRef),
         )
         btn_addNew.pack(**common_settings)
 
@@ -60,7 +60,7 @@ class Toolbar:
             master=container,
             text="Salir",
             bootstyle="danger",
-            command=self.root.destroy,
+            command=self.rootRef.destroy,
         )
         btn_exit.pack(side="bottom", fill="x", expand=True, anchor="s")
 

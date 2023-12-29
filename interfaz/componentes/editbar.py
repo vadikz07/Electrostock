@@ -59,7 +59,8 @@ class EditBar:
             text="Borrar",
             bootstyle="danger",
             command=lambda: (
-                delete_item(self.objectdata["uuid"], par=par),
+                delete_item(self.objectdata["uuid"], par=par, popmanagerRef=popmanagerRef),
+                popmanagerRef.remove_item_list(self.objectdata["uuid"]),
                 popmanagerRef.organize_by("num"),
             ),
         )

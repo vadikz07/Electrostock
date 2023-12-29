@@ -32,8 +32,9 @@ class PreviewWindow:
     common_options_pack = {'side':'top', 'expand':True,'fill':'both','padx':5, 'pady':10}
     def __init__(self, par, uuid_to_modify, popmanagerRef=None) -> None:
         self.uuid_to_modify = uuid_to_modify
+        self.popmanager = popmanagerRef
         self.root = par
-        self.original_data = retrieve_item(uuid_target=self.uuid_to_modify)
+        self.original_data = self.popmanager.retrieve_item(uuid_target=self.uuid_to_modify)
         self.newWindow = tk.Toplevel(self.root)
         self.newWindow.title('Imagen')
         self.newWindow.config(padx=20, pady=20)

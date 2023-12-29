@@ -1,17 +1,18 @@
 from tkinter import *
 import ttkbootstrap as tb
-from logica.getDataLogic import *
 from logica.getDataLogic import modify_item, validateData
+from interfaz.componentes.previewImg import PreviewWindow
 
 class EditItemForm:
     x_padd = 5
     width_entries_txt = 20
     width_entries_int = 4
-
+    
     def __init__(self, par, uuid_to_modify, popmanagerRef=None) -> None:
+        self.popmanager = popmanagerRef
         self.uuid_to_modify = uuid_to_modify
         self.root = par
-        self.original_data = retrieve_item(uuid_target=self.uuid_to_modify)
+        self.original_data = popmanagerRef.retrieve_item(uuid_target=self.uuid_to_modify)
         self.newWindow = tb.Toplevel(self.root)
         self.newWindow.title(f"Formulario de edicion para {uuid_to_modify}")
         self.newWindow.geometry("+%d+%d" % ((self.root.winfo_screenwidth() - 800) / 2, (self.root.winfo_screenheight() - 800) / 2))
@@ -70,6 +71,9 @@ class EditItemForm:
             master=self.img_lblframe, textvariable=self.img_ent_var
         )
         self.img_ent.pack(side="left", fill="x", expand=True, anchor="w")
+        #TODO: Incluir boton para hacer un preview de la imagen(para ver si funciona el enlace)
+        # self.preview_btn = tb.Button(master=self.img_lblframe, text='Prev', command=lambda: PreviewWindow(par=par, uuid_to_modify=self.original_data['uuid'],popmanagerRef=popmanagerRef))
+        # self.preview_btn.pack()
         self.list_entry_widgets.append(self.img_ent_var)
 
 
@@ -167,4 +171,4 @@ class EditItemForm:
             data_dict["localizacion"] = ""
 
         if validateData(data_dict):
-            modify_item(uuid_to_modify=self.uuid_to_modify,new_data=data_dict)
+            modify_item(uuid_to_modify=self.uuid_to_modify,new_data=data_dict, popmanagerRef=self.popmanager)

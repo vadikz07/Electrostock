@@ -10,7 +10,8 @@ class NewItemForm:
     width_entries_txt = 20
     width_entries_int = 4
 
-    def __init__(self, par) -> None:
+    def __init__(self, par, popmanagerRef) -> None:
+        self.popmanager = popmanagerRef
         self.root = par
         self.newWindow = tb.Toplevel(self.root)
         self.newWindow.title("Formulario de insercion")
@@ -172,18 +173,6 @@ class NewItemForm:
             master=self.fr_statusbar, textvariable=self.status_lbl_var
         )
         self.status_lbl.pack(anchor="center", fill="x", expand=True)
-
-        # self.debug_data()
-
-    # def debug_data(self):
-    #     self.boxnum_ent.set(66)
-    #     self.name_ent_var.set("Arduino")
-    #     self.model_ent_var.set("Micro")
-    #     self.cant_act_entry_var.set(10)
-    #     self.cant_warn_entry_var.set(5)
-    #     self.cant_max_entry_var.set(50)
-    #     self.dsheet_ent_var.set("http://www.google.es")
-    #     self.notes_text.insert("1.0", "Prueba de notas")
         
 
     def collect_data(self) -> dict:
@@ -208,7 +197,7 @@ class NewItemForm:
         if validateData(
             data_dict
         ):  
-            self.result_save = saveData(data_dict)
+            self.result_save = saveData(data_dict, popmanagerRef=self.popmanager)
             self.status_lbl_var.set("Datos insertados correctamente")
             if self.result_save:
                 self.clear_ent_fields()
