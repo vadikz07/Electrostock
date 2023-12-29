@@ -11,7 +11,7 @@ wid = 1050
 hei = 1000
 root.geometry(f"{wid}x{hei}")
 
-#NOTE: Quitados estas dos metodos de root, alto impacto en rendimiento.
+# NOTE: Quitados estas dos metodos de root, alto impacto en rendimiento.
 # root.update_idletasks()
 # root.withdraw()
 
@@ -42,13 +42,14 @@ fr_statusbar = tb.Frame(master=root, relief="sunken", padding=sml_padding)
 fr_statusbar.pack(fill="x", side="bottom", anchor="s")
 
 # Insercion item desde itemslist al arrancar el programa
-popmanager = PopulateManager(sf_info_items)
+popmanager = PopulateManager(frame=sf_info_items)
 popmanager.organize_by("num")
 
 
 # Widgets del navbar
-NavBarTop(fr_navbar, sf_info_items)
-Toolbar(fr_left_toolbar, root, sf_info_items)
+NavBarTop(fr_navbar, popmanagerRef=popmanager)
+# Toolbar(fr_left_toolbar, root, sf_info_items)
+Toolbar(fr_left_toolbar, popmanagerRef=popmanager, rootRef=root)
 
 
 status_lbl = tb.Label(

@@ -7,7 +7,7 @@ class EditItemForm:
     x_padd = 5
     width_entries_txt = 20
     width_entries_int = 4
-
+    #TODO: Incluir boton para hacer un preview de la imagen(para ver si funciona el enlace)
     def __init__(self, par, uuid_to_modify, popmanagerRef=None) -> None:
         self.uuid_to_modify = uuid_to_modify
         self.root = par

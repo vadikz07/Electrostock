@@ -2,7 +2,7 @@ from tkinter import *
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.editbar import EditBar
-from logica.getContainerSize import get_container_size
+from logica.getDataLogic import get_container_size
 from logica.BrowserLogic import open_dsheet_url
 from logica.constants_data import *
 
