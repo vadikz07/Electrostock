@@ -1,4 +1,5 @@
 import ttkbootstrap as tb
+from tkinter import StringVar, IntVar
 from ttkbootstrap.constants import *
 from interfaz.componentes.newItemForm import NewItemForm
 from interfaz.componentes.thumbgen import ThumbGen
@@ -33,6 +34,21 @@ class Toolbar:
         )
         btn_sortNum.pack(**common_settings)
 
+        btn_findByNum_btn = tb.Button(
+            master=container,
+            text='Mostrar por cajon',
+            command=lambda: popmanagerRef.visualize_by_num(int(spinbox_cajon_num.get()))
+        )
+        btn_findByNum_btn.pack(**common_settings)
+        
+        spinbox_cajon_num = tb.Spinbox(
+            master=container,
+            from_=1,
+            to=99,
+        )
+        spinbox_cajon_num.insert(0,"1")
+        spinbox_cajon_num.pack(**common_settings)
+
         btn_export = tb.Button(master=container, text="Exportar", state="disabled")
         btn_export.pack(**common_settings)
 
@@ -43,9 +59,7 @@ class Toolbar:
             command=lambda: ThumbGen(par),
         )
         btn_genThumb.pack(**common_settings)
-        # DEBUG
-        # ThumbGen(par)
-        # NewItemForm(par)
+
 
         # boton para abrir nueva ventana con formulario de insercion
         btn_addNew = tb.Button(

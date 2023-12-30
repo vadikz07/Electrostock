@@ -13,7 +13,6 @@ class PopulateManager:
         self.frame = frame
         self._items = getData()
         self._store_data_oop()
-        print("running pop init")
 
     def _store_data_oop(self):
         for item in self._items:
@@ -35,6 +34,12 @@ class PopulateManager:
         ]
         for item_l in items_low:
             ItemShow(self.frame, item_l, warn=True, popmanagerRef=self)
+
+    def visualize_by_num(self,num:int):
+        self.clear_children()
+        found_items = [item for item in self.all_items if item['localizacion'] == num]
+        for item in found_items:
+            ItemShow(self.frame, item, warn=False, popmanagerRef=self)
 
     def organize_by(self, sortby: str):
         self.clear_children()

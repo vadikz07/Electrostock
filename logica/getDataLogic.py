@@ -40,7 +40,7 @@ def overwrite_db(newdata:list):
         json.dump(newdata, json_file)
 
 def getData() -> list:
-    print('Reading data from json')
+    print('Cargando datos del fichero JSON')
     with open(file="data/itemlists.json", mode="r") as file:
         json_content = json.load(file)
     return json_content
