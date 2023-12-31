@@ -4,11 +4,13 @@ from ttkbootstrap.constants import *
 from interfaz.componentes.newItemForm import NewItemForm
 from interfaz.componentes.thumbgen import ThumbGen
 from logica.populateList import PopulateManager
+from interfaz.componentes.gridDisplay import GridDisplay
 
 
 class Toolbar:
     def __init__(self, par, popmanagerRef: PopulateManager, rootRef) -> None:
         self.rootRef = rootRef
+        self.popmanager = popmanagerRef
         common_settings = {
             "side": "top",
             "fill": "x",
@@ -79,3 +81,4 @@ class Toolbar:
         btn_exit.pack(side="bottom", fill="x", expand=True, anchor="s")
 
         # Metricas
+        GridDisplay(par=container, popmanagerRef=self.popmanager)

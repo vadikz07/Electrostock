@@ -5,16 +5,23 @@ from interfaz.componentes.warning import WarningWindow
 
 filepath_json = "data/itemlists.json"
 
-def delete_item(uuid_to_delete:str, appendNew=False, appendData={}, par=None, popmanagerRef=None, wrnMessage='¿Seguro que quieres borrar esta entrada?'):
-    answer = WarningWindow(par=par,msg=wrnMessage, title='Alerta').return_response()
+
+def delete_item(
+    uuid_to_delete: str,
+    appendNew=False,
+    appendData={},
+    par=None,
+    popmanagerRef=None,
+    wrnMessage="¿Seguro que quieres borrar esta entrada?",
+):
+    answer = WarningWindow(par=par, msg=wrnMessage, title="Alerta").return_response()
     print(popmanagerRef)
-    if answer:    
-        print(f'Buscando item {uuid_to_delete}')
+    if answer:
+        print(f"Buscando item {uuid_to_delete}")
         data_to_keep = []
-        #FIXME: Sustituir por popmanager.allitems
         full_data = popmanagerRef.all_items
         for d in full_data:
-            if d['uuid'] != uuid_to_delete:
+            if d["uuid"] != uuid_to_delete:
                 data_to_keep.append(d)
         if not appendNew:
             overwrite_db(data_to_keep)
@@ -22,27 +29,34 @@ def delete_item(uuid_to_delete:str, appendNew=False, appendData={}, par=None, po
             data_to_keep.append(appendData)
         overwrite_db(data_to_keep)
         popmanagerRef.remove_item_list(uuid_to_delete)
-    
 
-def modify_item(uuid_to_modify:str, new_data:dict, popmanagerRef=None):
-    print(f'Modificando contenidos del objeto {uuid_to_modify}')
-    #buscar en el fichero json el UUID del objeto
+
+def modify_item(uuid_to_modify: str, new_data: dict, popmanagerRef=None):
+    print(f"Modificando contenidos del objeto {uuid_to_modify}")
+    # buscar en el fichero json el UUID del objeto
     item_to_mod = popmanagerRef.retrieve_item(uuid_to_modify)
-    for entry in item_to_mod: #entry es 'uuid' 'nombre' 'modelo' ... etc
+    for entry in item_to_mod:  # entry es 'uuid' 'nombre' 'modelo' ... etc
         try:
             item_to_mod[entry] = new_data[entry]
-            print(f'{entry.upper()} -> Valor actualizado')
+            print(f"{entry.upper()} -> Valor actualizado")
         except KeyError:
-            print(f'{entry.upper()} -> Valor vacio, no se actualiza')
-    delete_item(uuid_to_modify, appendNew=True, appendData=item_to_mod,wrnMessage='¿Quieres actualizar los datos?', popmanagerRef=popmanagerRef)
-    
-    
-def overwrite_db(newdata:list):
-    with open(filepath_json, 'w') as json_file:
+            print(f"{entry.upper()} -> Valor vacio, no se actualiza")
+    delete_item(
+        uuid_to_modify,
+        appendNew=True,
+        appendData=item_to_mod,
+        wrnMessage="¿Quieres actualizar los datos?",
+        popmanagerRef=popmanagerRef,
+    )
+
+
+def overwrite_db(newdata: list):
+    with open(filepath_json, "w") as json_file:
         json.dump(newdata, json_file)
 
+
 def getData() -> list:
-    print('Cargando datos del fichero JSON')
+    print("Cargando datos del fichero JSON")
     with open(file="data/itemlists.json", mode="r") as file:
         json_content = json.load(file)
     return json_content
@@ -71,10 +85,22 @@ def saveData(datadict_to_insert: dict, popmanagerRef=None) -> bool:
         return False
 
 
+def get_list_status_containers() -> tuple:
+    """
+    Returns a tuple with (occupied, empty)
+    """
+    full_data = getData()
+    occupied = set()
+    for item in full_data:
+        occupied.add(item['localizacion'])
+    empty = [num for num in range(1,100) if num not in occupied]
+    return (list(occupied), empty)
+
+
 def validateData(datadict: dict):
     b_nombre_ok = 3 <= len(datadict["nombre"]) <= 30
     b_modelo_ok = 3 <= len(datadict["modelo"]) <= 30
-    if datadict["fabricante"] == '':
+    if datadict["fabricante"] == "":
         b_maker_ok = True
     else:
         b_maker_ok = 3 <= len(datadict["fabricante"]) <= 15
@@ -92,7 +118,9 @@ def validateData(datadict: dict):
     else:
         b_datasheet_ok = validate_url(datadict["datasheet"])
 
-    b_notas_ok = 5 <= len(datadict["notas"]) <= MAX_LEN_NOTES_FULL or datadict['notas'] == ''
+    b_notas_ok = (
+        5 <= len(datadict["notas"]) <= MAX_LEN_NOTES_FULL or datadict["notas"] == ""
+    )
 
     try:
         localizacion_var = int(datadict["localizacion"])
@@ -130,20 +158,21 @@ def validateData(datadict: dict):
         print("datos no son validos")
         return False
 
-def get_container_size(num): 
+
+def get_container_size(num):
     # tuples => minimo maximo
-    xxl = (1,8) 
-    l = (9,32)
-    m = (33,50)
-    s = (51,99)
+    xxl = (1, 8)
+    l = (9, 32)
+    m = (33, 50)
+    s = (51, 99)
     match num:
-        case num if xxl[0]<= num <= xxl[1]:
+        case num if xxl[0] <= num <= xxl[1]:
             return "XL"
-        case num if l[0]<= num <= l[1]:
+        case num if l[0] <= num <= l[1]:
             return "GRANDE"
-        case num if m[0]<= num <= m[1]:
+        case num if m[0] <= num <= m[1]:
             return "MEDIANO"
-        case num if s[0]<= num <= s[1]:
+        case num if s[0] <= num <= s[1]:
             return "PEQUEÑO"
         case _:
             return "INPUT NO VALIDO"

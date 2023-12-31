@@ -6,7 +6,6 @@ import threading
 
 
 class PopulateManager:
-    # TODO: Implementar funcionalidad para buscar todos los objetos de un cajon (por numero)
     precision_search = 70  # ratio requerido para considerar un match
 
     def __init__(self, frame) -> None:
