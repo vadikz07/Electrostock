@@ -52,7 +52,7 @@ class Toolbar:
         # spinbox_cajon_num.pack(**common_settings)
 
         btn_export = tb.Button(master=container, text="Exportar", state="disabled")
-        btn_export.pack(**common_settings)
+        # btn_export.pack(**common_settings)
 
         btn_genThumb = tb.Button(
             master=container,
@@ -78,7 +78,7 @@ class Toolbar:
             bootstyle="danger",
             command=self.rootRef.destroy,
         )
-        btn_exit.pack(side="bottom", fill="x", expand=True, anchor="s")
+        # btn_exit.pack(side="bottom", fill="x", expand=True, anchor="s")
 
         # Metricas
         GridDisplay(par=container, popmanagerRef=self.popmanager)
