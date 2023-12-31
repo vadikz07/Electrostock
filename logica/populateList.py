@@ -44,6 +44,10 @@ class PopulateManager:
         found_items = [item for item in self.all_items if item['localizacion'] == num]
         for item in found_items:
             ItemShow(self.frame, item, warn=False, popmanagerRef=self)
+        #TODO: Si la lista esta vacia, mostrar un objeto Item, que indique el tamaño del cajon
+        if len(found_items) == 0:
+            # print(f'cajon vacio {num}')
+            ItemShow(par=self.frame,data_dict=ITEM_STRUCTURE, isEmpty=True, boxnum=num)
 
     def organize_by(self, sortby: str):
         self.clear_children()

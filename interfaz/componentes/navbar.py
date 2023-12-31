@@ -18,7 +18,7 @@ class NavBarTop:
             text="Mostrar vacios",
             command=lambda: popmanagerRef.visualize_empty(),
         )
-        btn_showEmpty.pack(**common_left)
+        # btn_showEmpty.pack(**common_left)
 
         btn_showAll = tb.Button(
             master=navbar_frame,
