@@ -94,7 +94,7 @@ class ItemShow:
             btn_dsheet.pack(side='left', anchor='w')
             btn_dsheet.config(command=lambda: open_dsheet_url(data_dict['datasheet']))
             
-            amt_fstring = f'{data_dict["cantidad"]}/ {data_dict["cantidadMaxima"]}'
+            amt_fstring = f'Cantidad: {data_dict["cantidad"]}'
             lbl_cant = tb.Label(master=additional_frame, text=amt_fstring, font=("Arial", 12, "bold"), padding=md_padd, foreground=color)
             lbl_cant.pack(side='left', anchor='center')
             

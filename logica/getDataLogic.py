@@ -81,13 +81,9 @@ def validateData(datadict: dict):
     except ValueError:
         b_cantidad_ok = False
     try:
-        b_cantidadAviso_ok = 1 <= int(datadict["cantidadAviso"]) <= 999
+        b_cantidadAviso_ok = 0 <= int(datadict["cantidadAviso"]) <= 999
     except ValueError:
         b_cantidadAviso_ok = False
-    try:
-        b_cantidadMaxima_ok = 1 <= int(datadict["cantidadMaxima"]) <= 999
-    except ValueError:
-        b_cantidadMaxima_ok = False
 
     if datadict["datasheet"] == "":
         b_datasheet_ok = True
@@ -112,7 +108,6 @@ def validateData(datadict: dict):
     print(f"maker {b_maker_ok}")
     print(f"cant {b_cantidad_ok}")
     print(f"cantwarn {b_cantidadAviso_ok}")
-    print(f"cantmax {b_cantidadMaxima_ok}")
     print(f"dsheet {b_datasheet_ok}")
     print(f"notas {b_notas_ok}")
     print(f"local {b_localizacion_ok}")
@@ -123,7 +118,6 @@ def validateData(datadict: dict):
         and b_maker_ok
         and b_cantidad_ok
         and b_cantidadAviso_ok
-        and b_cantidadMaxima_ok
         and b_datasheet_ok
         and b_notas_ok
         and b_localizacion_ok

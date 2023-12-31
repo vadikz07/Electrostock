@@ -94,16 +94,16 @@ class EditItemForm:
         self.list_entry_widgets.append(self.cant_act_entry_var)
         
         # Segundo hijo de cant frame para maximo
-        self.cant_max_lblframe = tb.LabelFrame(master=self.cant_frame, text="Maximo")
+        # self.cant_max_lblframe = tb.LabelFrame(master=self.cant_frame, text="Maximo")
         # self.cant_max_lblframe.grid(row=0, column=1)
-        self.cant_max_lblframe.pack(
-            side="left", padx=(5, 5), anchor="center", fill="x", expand=True
-        )
+        # self.cant_max_lblframe.pack(
+        #     side="left", padx=(5, 5), anchor="center", fill="x", expand=True
+        # )
         ##Entry para el maximo
-        self.cant_max_entry_var = tb.Spinbox(master=self.cant_max_lblframe, from_=1, to=200)
-        self.cant_max_entry_var.set(self.original_data['cantidadMaxima'])
-        self.cant_max_entry_var.pack(side="top", fill="x")
-        self.list_entry_widgets.append(self.cant_max_entry_var)
+        # self.cant_max_entry_var = tb.Spinbox(master=self.cant_max_lblframe, from_=1, to=200)
+        # self.cant_max_entry_var.set(self.original_data['cantidadMaxima'])
+        # self.cant_max_entry_var.pack(side="top", fill="x")
+        # self.list_entry_widgets.append(self.cant_max_entry_var)
 
         # Tercer hijo de cant frame para aviso
         self.cant_warn_lblframe = tb.LabelFrame(
@@ -162,7 +162,7 @@ class EditItemForm:
         data_dict["fabricante"] = self.maker_ent_var.get()
         data_dict["cantidad"] = self.cant_act_entry_var.get()
         data_dict["cantidadAviso"] = self.cant_warn_entry_var.get()
-        data_dict["cantidadMaxima"] = self.cant_max_entry_var.get()
+        # data_dict["cantidadMaxima"] = self.cant_max_entry_var.get()
         data_dict["datasheet"] = self.dsheet_ent_var.get()
         data_dict["notas"] = self.notes_text.get("1.0", "end-1c")
         try:
