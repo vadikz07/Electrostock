@@ -10,7 +10,7 @@ class NewItemForm:
     width_entries_txt = 20
     width_entries_int = 4
 
-    def __init__(self, par, popmanagerRef) -> None:
+    def __init__(self, par, popmanagerRef, default_box_num=1) -> None:
         self.popmanager = popmanagerRef
         self.root = par
         self.newWindow = tb.Toplevel(self.root)
@@ -34,6 +34,7 @@ class NewItemForm:
         )
         self.boxnum_lblframe.grid(row=0, column=1, sticky="e")
         self.boxnum_ent = tb.Spinbox(master=self.boxnum_lblframe, from_=1, to=96)
+        self.boxnum_ent.insert(0,default_box_num)
         self.boxnum_ent.pack(side="right", expand=False, anchor="e")
         self.list_entry_widgets.append(self.boxnum_ent)
 

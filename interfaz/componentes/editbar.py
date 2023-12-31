@@ -3,6 +3,7 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from interfaz.componentes.popupNotes import NotePopup
 from interfaz.componentes.editItemForm import EditItemForm
+from interfaz.componentes.newItemForm import NewItemForm
 from interfaz.componentes.previewImg import PreviewWindow
 from logica.constants_data import *
 from logica.getDataLogic import *
@@ -10,10 +11,11 @@ from logica.getDataLogic import *
 
 class EditBar:
     def __init__(
-        self, par, stickto, isEmpty=False, objectdata=None, popmanagerRef=None
+        self, par, stickto, isEmpty=False, objectdata=None, popmanagerRef=None,default_box_num=98
     ) -> None:
         self.isEmpty = isEmpty
         self.objectdata = objectdata
+        self.default_box_num = default_box_num
         common_settings = {"side": "left", "fill": "x", "expand": True, 'padx':2}
 
         btn_edit = tb.Button(
@@ -69,5 +71,5 @@ class EditBar:
         if self.isEmpty:
             btn_notes.config(state="disabled")
             btn_see_img.config(state='disabled')
-            btn_edit.config(state="disabled")
+            btn_edit.config(text='Insertar nuevo', command=lambda: NewItemForm(par=par, popmanagerRef=popmanagerRef, default_box_num=self.default_box_num))
             btn_del.config(state="disabled")
