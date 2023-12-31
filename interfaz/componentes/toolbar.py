@@ -41,7 +41,7 @@ class Toolbar:
             text='Mostrar por cajon',
             command=lambda: popmanagerRef.visualize_by_num(int(spinbox_cajon_num.get()))
         )
-        btn_findByNum_btn.pack(**common_settings)
+        # btn_findByNum_btn.pack(**common_settings)
         
         spinbox_cajon_num = tb.Spinbox(
             master=container,
@@ -49,7 +49,7 @@ class Toolbar:
             to=99,
         )
         spinbox_cajon_num.insert(0,"1")
-        spinbox_cajon_num.pack(**common_settings)
+        # spinbox_cajon_num.pack(**common_settings)
 
         btn_export = tb.Button(master=container, text="Exportar", state="disabled")
         btn_export.pack(**common_settings)

@@ -14,7 +14,7 @@ class EditBar:
     ) -> None:
         self.isEmpty = isEmpty
         self.objectdata = objectdata
-        common_settings = {"side": "left", "fill": "x", "expand": True}
+        common_settings = {"side": "left", "fill": "x", "expand": True, 'padx':2}
 
         btn_edit = tb.Button(
             master=par,
@@ -64,7 +64,7 @@ class EditBar:
                 # popmanagerRef.organize_by("num"),
             ),
         )
-        btn_del.pack()
+        btn_del.pack(padx=2)
 
         if self.isEmpty:
             btn_notes.config(state="disabled")
