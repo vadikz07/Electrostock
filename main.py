@@ -7,15 +7,13 @@ from logica.populateList import PopulateManager
 
 root = tb.Window(themename="superhero")
 root.title("Electrostock")
-wid = 1050
-hei = 1000
+wid = 1300
+hei = 1200
 root.geometry(f"{wid}x{hei}")
 
 # NOTE: Quitados estas dos metodos de root, alto impacto en rendimiento.
 # root.update_idletasks()
 # root.withdraw()
-
-#TODO: Hacer que los labels sean botones, y que muestren los contenidos de ese cajon.
 
 root.geometry(
     f"+{(root.winfo_screenwidth() - wid) // 2}+{(root.winfo_screenheight() - hei) // 2}"
