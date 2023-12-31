@@ -101,6 +101,7 @@ class PopulateManager:
     
     def remove_item_list(self, uuid_target):
         #buscar indice del objeto usando self.retrieve_item
+        print('running del on popmanager')
         target_idx = -1
         for idx,item in enumerate(self.all_items):
             if item['uuid'] == uuid_target:

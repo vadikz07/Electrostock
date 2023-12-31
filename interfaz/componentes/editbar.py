@@ -60,8 +60,8 @@ class EditBar:
             bootstyle="danger",
             command=lambda: (
                 delete_item(self.objectdata["uuid"], par=par, popmanagerRef=popmanagerRef),
-                popmanagerRef.remove_item_list(self.objectdata["uuid"]),
-                popmanagerRef.organize_by("num"),
+                # popmanagerRef.remove_item_list(self.objectdata["uuid"]),
+                # popmanagerRef.organize_by("num"),
             ),
         )
         btn_del.pack()
