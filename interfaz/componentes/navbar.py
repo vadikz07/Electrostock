@@ -68,7 +68,7 @@ class NavBarTop:
             length=135,
             from_=35,
             to=100,
-            value=70,
+            value=60,
             command=slider,
         )
         precision_slider.pack(**common_right, padx=10)

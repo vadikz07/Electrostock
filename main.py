@@ -15,7 +15,7 @@ root.geometry(f"{wid}x{hei}")
 # root.update_idletasks()
 # root.withdraw()
 
-#TODO: Previo de los cajones con codigo de color en toolbar(izquierda)
+#TODO: Hacer que los labels sean botones, y que muestren los contenidos de ese cajon.
 
 root.geometry(
     f"+{(root.winfo_screenwidth() - wid) // 2}+{(root.winfo_screenheight() - hei) // 2}"

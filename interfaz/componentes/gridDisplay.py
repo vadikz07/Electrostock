@@ -23,7 +23,7 @@ class GridDisplay:
         self.root = par
         self.cells_frame = tb.LabelFrame(master=self.root, text="Contenidos")
         self.cells_frame.pack(pady=20)
-        occupied, empty = get_list_status_containers()
+        occupied, empty = get_list_status_containers(data_list=popmanagerRef.all_items)
         # print(occupied)
         # print(empty)
         self.lbls_placed = 1

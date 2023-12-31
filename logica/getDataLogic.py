@@ -85,11 +85,11 @@ def saveData(datadict_to_insert: dict, popmanagerRef=None) -> bool:
         return False
 
 
-def get_list_status_containers() -> tuple:
+def get_list_status_containers(data_list) -> tuple:
     """
     Returns a tuple with (occupied, empty)
     """
-    full_data = getData()
+    full_data = data_list
     occupied = set()
     for item in full_data:
         occupied.add(item['localizacion'])
