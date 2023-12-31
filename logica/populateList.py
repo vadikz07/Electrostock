@@ -2,6 +2,7 @@ from interfaz.componentes.item import ItemShow
 from logica.getDataLogic import getData
 from fuzzywuzzy import fuzz
 from logica.constants_data import *
+import threading
 
 
 class PopulateManager:
@@ -22,6 +23,10 @@ class PopulateManager:
         for child in self.frame.winfo_children():
             child.destroy()
 
+    def visualize_all_thread(self):
+        thread = threading.Thread(target=self.visualize_all)
+        thread.start()
+    
     def visualize_all(self):
         self.clear_children()
         for data_item in self.all_items:
@@ -71,6 +76,10 @@ class PopulateManager:
         for match_ in found_results:
             ItemShow(self.frame, match_, popmanagerRef=self)
 
+    def visualize_empty_thread(self):
+        thread = threading.Thread(target=self.visualize_empty)
+        thread.start()
+
     def visualize_empty(self):
         self.notempty = set(item["localizacion"] for item in self.all_items)
         self.empty = [num for num in range(1, 100) if num not in self.notempty]
@@ -83,6 +92,7 @@ class PopulateManager:
                 boxnum=empty_num,
                 warn=False,
             )
+            
     def retrieve_item(self, uuid_target):
         for item in self.all_items:
             if item['uuid'] == uuid_target:
