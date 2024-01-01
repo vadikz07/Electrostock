@@ -14,6 +14,10 @@ class PopulateManager:
         self._items = getData()
         self._store_data_oop()
 
+    def force_refresh(self):
+        self._items = getData()
+        self.organize_by('num')
+
     def _store_data_oop(self):
         for item in self._items:
             self.all_items.append(item)
