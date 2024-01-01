@@ -62,7 +62,7 @@ def getData() -> list:
     return json_content
 
 
-def saveData(datadict_to_insert: dict, popmanagerRef=None) -> bool:
+def saveData(datadict_to_insert: dict, popmanagerRef) -> bool:
     # comprobar si existe el fichero json, si esta, leerlo
     popmanagerRef.all_items.append(datadict_to_insert)
     try:

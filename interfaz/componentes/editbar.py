@@ -16,6 +16,7 @@ class EditBar:
         self.isEmpty = isEmpty
         self.objectdata = objectdata
         self.default_box_num = default_box_num
+        self.popmanagerRef= popmanagerRef
         common_settings = {"side": "left", "fill": "x", "expand": True, 'padx':2}
 
         btn_edit = tb.Button(
@@ -71,5 +72,5 @@ class EditBar:
         if self.isEmpty:
             btn_notes.config(state="disabled")
             btn_see_img.config(state='disabled')
-            btn_edit.config(text='Insertar nuevo', command=lambda: NewItemForm(par=par, popmanagerRef=popmanagerRef, default_box_num=self.default_box_num))
+            btn_edit.config(text='Insertar nuevo', command=lambda: NewItemForm(par=par, popmanagerRef=popmanagerRef, default_box_num=self.default_box_num), state='disabled')
             btn_del.config(state="disabled")
