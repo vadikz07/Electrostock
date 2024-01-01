@@ -32,11 +32,16 @@ class PreviewWindow:
     x_padd = 5
     common_options_pack = {'side':'top', 'expand':True,'fill':'both','padx':5, 'pady':10}
         #TODO: Cambiar el destino de la imagen a la parte inferior del toolbar izquierdo.
-    def __init__(self, par, uuid_to_modify, popmanagerRef=None) -> None:
+    def __init__(self, par, uuid_to_modify=None, popmanagerRef=None, urlTest:str='') -> None:
         self.uuid_to_modify = uuid_to_modify
         self.popmanager = popmanagerRef
         self.root = par
-        self.original_data = self.popmanager.retrieve_item(uuid_target=self.uuid_to_modify)
+        self.urlTest=urlTest
+        self.original_data = ITEM_STRUCTURE
+        try:
+            self.original_data = self.popmanager.retrieve_item(uuid_target=self.uuid_to_modify)
+        except:
+            self.original_data['imagen'] = urlTest
         self.newWindow = tk.Toplevel(self.root)
         self.newWindow.title('Imagen')
         self.newWindow.geometry("+%d+%d" % ((self.root.winfo_screenwidth() - 200) / 2, (self.root.winfo_screenheight() - 800) / 2))

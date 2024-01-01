@@ -4,6 +4,7 @@ from logica.cli_wizard import Wololo
 from logica.getDataLogic import *
 from logica.getDataLogic import validateData
 from uuid import uuid4
+from interfaz.componentes.previewImg import PreviewWindow
 
 class NewItemForm:
     x_padd = 5
@@ -63,6 +64,10 @@ class NewItemForm:
             master=self.img_lblframe, textvariable=self.img_ent_var
         )
         self.img_ent.pack(side="left", fill="x", expand=True, anchor="w")
+        self.test_img_btn = tb.Button(master=self.img_lblframe, text='Probar imagen', command=lambda:(
+                PreviewWindow(par=par,urlTest=self.img_ent_var.get()).show_image()
+            ),bootstyle='info')
+        self.test_img_btn.pack(side="left", expand=False, anchor="e")
         self.list_entry_widgets.append(self.img_ent_var)
 
 
