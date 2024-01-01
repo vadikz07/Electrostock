@@ -5,7 +5,6 @@ from logica.getDataLogic import getData
 from logica.constants_data import *
 
 def show_empty_containers(parent):
-    #FIXME: Funciona, pero toma bastante tiempo en volver a dibujar los contenidos, buscar algo mas eficiente.
     containers_w_stuff = [item['localizacion'] for item in getData()]
     containers_empty = [num for num in range(1,99+1) if num not in containers_w_stuff]
     

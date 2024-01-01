@@ -13,3 +13,4 @@ ITEM_STRUCTURE = {
     "localizacion": 0
   }
 MAX_LEN_NOTES_FULL = 400
+MAX_TIME_CLOSE_WINDOW = 5000
