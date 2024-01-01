@@ -39,6 +39,7 @@ class PreviewWindow:
         self.original_data = self.popmanager.retrieve_item(uuid_target=self.uuid_to_modify)
         self.newWindow = tk.Toplevel(self.root)
         self.newWindow.title('Imagen')
+        self.newWindow.geometry("+%d+%d" % ((self.root.winfo_screenwidth() - 200) / 2, (self.root.winfo_screenheight() - 800) / 2))
         self.newWindow.config(padx=20, pady=20)
         self.maincontainer = tb.Frame(master=self.newWindow)
         self.maincontainer.pack(**self.common_options_pack)
@@ -47,7 +48,7 @@ class PreviewWindow:
         self.root.after(MAX_TIME_CLOSE_WINDOW, self.destroy_window)
 
     def destroy_window(self):
-        self.root.destroy()
+        self.newWindow.destroy()
         
     def show_image(self):
         if self.original_data['imagen'] != '':
