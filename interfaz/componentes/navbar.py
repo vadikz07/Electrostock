@@ -3,6 +3,7 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from logica.showEmptyContainers import show_empty_containers
 from logica.populateList import PopulateManager
+from tkinter import BooleanVar, IntVar
 
 
 class NavBarTop:
@@ -49,11 +50,17 @@ class NavBarTop:
             master=navbar_frame,
             text="Buscar",
             command=lambda: popmanagerRef.search_item(
-                ent_searchBar.get(), resolution=int(precision_slider.get())
+                ent_searchBar.get(), resolution=int(precision_slider.get()),search_all_fields=btn_search_all_bool_var.get()
             ),
         )
+        #TODO: Incluir check radio para buscar tambien en las notas
         btn_commitSearch.pack(**common_right)
 
+        btn_search_all_bool_var = IntVar()
+        btn_search_all_bool_var.set(0)
+        btn_radio_search_all_fields = tb.Checkbutton(master=navbar_frame, text='Buscar en todos los campos', variable=btn_search_all_bool_var, onvalue=1, offvalue=0)
+        btn_radio_search_all_fields.pack(**common_right)
+        
         value_searchBar = StringVar()
         ent_searchBar = tb.Entry(master=navbar_frame, textvariable=value_searchBar)
         ent_searchBar.pack(**common_right)
