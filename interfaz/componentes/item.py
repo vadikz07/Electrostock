@@ -31,6 +31,7 @@ class ItemShow:
         self.boxnum = boxnum
         self.warn = warn
         self.maxlennotes = MAX_LEN_NOTES
+        self.popmanager = popmanagerRef
         item_frame = tb.Frame(master=par, bootstyle='dark', border=10)
         item_frame.pack(side='top', fill='x', expand=True)
         item_frame_lower = tb.Frame(master=par, bootstyle='light')
@@ -84,7 +85,7 @@ class ItemShow:
         #IMG FRAME
         
         #CONTROL FRAME⬇️
-        if not self.isEmpty:   
+        if not self.isEmpty:   #Si tiene contenidos
             if data_dict['datasheet'] != '':
                 btn_dsheet = tb.Button(master=additional_frame, text=data_dict['datasheet'], bootstyle='success')
                 if self.isEmpty:
@@ -104,7 +105,7 @@ class ItemShow:
             
         control_frame = tb.Frame(master=item_frame_lower, bootstyle='dark')
         control_frame.pack(side="bottom", fill='both', expand=True)
-        EditBar(par=control_frame,stickto='e',isEmpty=isEmpty,objectdata=data_dict,popmanagerRef=popmanagerRef,default_box_num=self.boxnum)
+        EditBar(par=control_frame,stickto='e',isEmpty=isEmpty,objectdata=data_dict,popmanagerRef=self.popmanager,default_box_num=self.boxnum)
         #Separador para el siguiente objeto
         sepa = tb.Separator(par, orient="horizontal", bootstyle="dark")
         sepa.pack(side='top', fill='x', pady=4,expand=True)

@@ -8,13 +8,14 @@ class Cell:
     def __init__(self, par, num: int = 0, isEmpty=bool, row=0, col=0, popmanagerRef:PopulateManager=PopulateManager, gridRef=None) -> None:
         self.root = par
         self.num = num
+        self.popmanager = popmanagerRef
         self.lbl = tb.Button(master=self.root, text=self.num)
         self.gridRef = gridRef
         if isEmpty:
-            self.lbl.config(bootstyle='secondary', command=lambda: (popmanagerRef.visualize_by_num(self.num),
+            self.lbl.config(bootstyle='secondary', command=lambda: (self.popmanager.visualize_by_num(self.num),
                                                                     self.gridRef._refresh_grid()))
         else:
-            self.lbl.config(bootstyle='info', command=lambda: (popmanagerRef.visualize_by_num(self.num),
+            self.lbl.config(bootstyle='info', command=lambda: (self.popmanager.visualize_by_num(self.num),
                                                                self.gridRef._refresh_grid()))
         self.lbl.grid(row=row, column=col, sticky='ew', padx=1, pady=1)
 

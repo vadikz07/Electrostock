@@ -21,23 +21,25 @@ class NewItemForm:
         self.main_container = tb.Frame(master=self.newWindow, padding=self.x_padd)
         self.main_container.pack()
 
+        self.boxnum_lblframe = tb.LabelFrame(
+            master=self.main_container, text="Cajon nº"
+        )
+        self.boxnum_lblframe.grid(row=0, column=0, sticky="w")
+        self.boxnum_ent = tb.Spinbox(master=self.boxnum_lblframe, from_=1, to=96)
+        self.boxnum_ent.insert(0,default_box_num)
+        self.boxnum_ent.pack(side="left", expand=False, anchor="w")
+        self.list_entry_widgets.append(self.boxnum_ent)
+
         self.name_lblframe = tb.LabelFrame(master=self.main_container, text="Nombre")
-        self.name_lblframe.grid(row=0, column=0, sticky="ew")
+        self.name_lblframe.grid(row=0, column=1, sticky="ew")
         self.name_ent_var = StringVar()
         self.name_ent = tb.Entry(
             master=self.name_lblframe, textvariable=self.name_ent_var
         )
-        self.name_ent.pack(side="left", fill="x", expand=True, anchor="w")
+        self.name_ent.pack(side="right", fill="x", expand=True, anchor="w")
         self.list_entry_widgets.append(self.name_ent_var)
 
-        self.boxnum_lblframe = tb.LabelFrame(
-            master=self.main_container, text="Cajon nº"
-        )
-        self.boxnum_lblframe.grid(row=0, column=1, sticky="e")
-        self.boxnum_ent = tb.Spinbox(master=self.boxnum_lblframe, from_=1, to=96)
-        self.boxnum_ent.insert(0,default_box_num)
-        self.boxnum_ent.pack(side="right", expand=False, anchor="e")
-        self.list_entry_widgets.append(self.boxnum_ent)
+
 
         self.model_lblframe = tb.LabelFrame(master=self.main_container, text="Modelo")
         self.model_lblframe.grid(row=1, column=0, columnspan=2, sticky="ew")

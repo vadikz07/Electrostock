@@ -22,7 +22,7 @@ class NavBarTop:
 
         btn_showAll = tb.Button(
             master=navbar_frame,
-            text="Mostrar todos",
+            text="Mostrar por fecha",
             bootstyle="info",
             command=lambda: popmanagerRef.visualize_all(),
         )

@@ -72,5 +72,5 @@ class EditBar:
         if self.isEmpty:
             btn_notes.config(state="disabled")
             btn_see_img.config(state='disabled')
-            btn_edit.config(text='Insertar nuevo', command=lambda: NewItemForm(par=par, popmanagerRef=popmanagerRef, default_box_num=self.default_box_num), state='disabled')
+            btn_edit.config(text='Insertar nuevo', command=lambda: NewItemForm(par=par, popmanagerRef=self.popmanagerRef, default_box_num=self.default_box_num),state='disabled')
             btn_del.config(state="disabled")
