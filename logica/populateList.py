@@ -13,6 +13,14 @@ class PopulateManager:
         self.frame = frame
         self._items = getData()
         self._store_data_oop()
+        self.griddisplay_ref = None
+
+    #References
+    def set_griddisplay_ref(self,newPointer):
+        self.griddisplay_ref = newPointer
+        
+    def get_griddisplay_ref(self):
+        return self.griddisplay_ref
 
     def force_refresh(self):
         self._items = getData()

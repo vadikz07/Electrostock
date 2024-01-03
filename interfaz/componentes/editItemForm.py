@@ -203,5 +203,3 @@ class EditItemForm:
                 popmanagerRef=self.popmanager,
             )
             self.popmanager.all_items.append(data_dict)
-            # self.popmanager.force_refresh()
-            # self.popmanager.organize_by("num")

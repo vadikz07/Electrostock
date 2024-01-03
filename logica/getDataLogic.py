@@ -29,6 +29,8 @@ def delete_item(
             data_to_keep.append(appendData)
         overwrite_db(data_to_keep)
         popmanagerRef.remove_item_list(uuid_to_delete)
+    gridRef = popmanagerRef.get_griddisplay_ref()
+    gridRef._refresh_grid()
 
 
 def modify_item(uuid_to_modify: str, new_data: dict, popmanagerRef=None):
@@ -72,6 +74,8 @@ def saveData(datadict_to_insert: dict, popmanagerRef) -> bool:
             contents = json.load(file)
     except FileNotFoundError:
         contents = {}
+    gridRef = popmanagerRef.get_griddisplay_ref()
+    gridRef._refresh_grid()
 
     # actualizar variable contents con datadict_to_insert
     contents.append(datadict_to_insert)

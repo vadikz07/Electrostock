@@ -24,6 +24,7 @@ class GridDisplay:
     def __init__(self, par, popmanagerRef: PopulateManager) -> None:
         self.columns = 7
         self.popmanagerRef = popmanagerRef
+        popmanagerRef.set_griddisplay_ref(self)
         self.rows = 14
         self.root = par
         self.cells_frame = tb.LabelFrame(master=self.root, text="Contenidos")
