@@ -58,7 +58,7 @@ class NavBarTop:
 
         btn_search_all_bool_var = IntVar()
         btn_search_all_bool_var.set(0)
-        btn_radio_search_all_fields = tb.Checkbutton(master=navbar_frame, text='Buscar en todos los campos', variable=btn_search_all_bool_var, onvalue=1, offvalue=0)
+        btn_radio_search_all_fields = tb.Checkbutton(master=navbar_frame, text='', variable=btn_search_all_bool_var, onvalue=1, offvalue=0)
         btn_radio_search_all_fields.pack(**common_right)
         
         value_searchBar = StringVar()
