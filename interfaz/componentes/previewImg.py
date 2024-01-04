@@ -10,7 +10,7 @@ import io
 
 
 class PhotoImageLabel(tb.Label):
-    max_size = (300,300)
+    max_size = (220,220)
     def __init__(self, parent, local=False, **kwargs):
         if local == False:
             with urllib.request.urlopen(kwargs['image']) as u:
@@ -34,22 +34,23 @@ class PreviewWindow:
     def __init__(self, par, uuid_to_modify=None, popmanagerRef=None, urlTest:str='') -> None:
         self.uuid_to_modify = uuid_to_modify
         self.popmanager = popmanagerRef
-        self.root = par
+        # self.root = par
         self.urlTest=urlTest
         self.original_data = ITEM_STRUCTURE
         try:
             self.original_data = self.popmanager.retrieve_item(uuid_target=self.uuid_to_modify)
         except:
             self.original_data['imagen'] = urlTest
-        self.newWindow = tk.Toplevel(self.root)
-        self.newWindow.title('Imagen')
-        self.newWindow.geometry("+%d+%d" % ((self.root.winfo_screenwidth() - 200) / 2, (self.root.winfo_screenheight() - 800) / 2))
-        self.newWindow.config(padx=20, pady=20)
-        self.maincontainer = tb.Frame(master=self.newWindow)
+        # self.newWindow = tk.Toplevel(self.root)
+        # self.newWindow.title('Imagen')
+        # self.newWindow.geometry("+%d+%d" % ((self.root.winfo_screenwidth() - 200) / 2, (self.root.winfo_screenheight() - 800) / 2))
+        # self.newWindow.config(padx=20, pady=20)
+        self.maincontainer = tb.Frame(master=popmanagerRef.get_toolbar_ref().img_lblframe)
         self.maincontainer.pack(**self.common_options_pack)
+        #TODO: Mostrar la imagen en la parte inferior del toolbar de la ventana principal. / valor anterior = self.maincointainer
         self.labeltext = tb.LabelFrame(master=self.maincontainer, text=f'{self.original_data["nombre"]}: {self.original_data["modelo"]}')
         self.labeltext.pack(**self.common_options_pack)
-        self.root.after(MAX_TIME_CLOSE_WINDOW, self.destroy_window)
+        # self.root.after(MAX_TIME_CLOSE_WINDOW, self.destroy_window)
 
     def destroy_window(self):
         self.newWindow.destroy()

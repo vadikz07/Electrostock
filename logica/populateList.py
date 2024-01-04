@@ -14,6 +14,7 @@ class PopulateManager:
         self._items = getData()
         self._store_data_oop()
         self.griddisplay_ref = None
+        self.toolbar_ref = None
 
     #References
     def set_griddisplay_ref(self,newPointer):
@@ -21,6 +22,12 @@ class PopulateManager:
         
     def get_griddisplay_ref(self):
         return self.griddisplay_ref
+
+    def set_toolbar_ref(self,newPointer):
+        self.toolbar_ref = newPointer
+        
+    def get_toolbar_ref(self):
+        return self.toolbar_ref
 
     def force_refresh(self):
         self._items = getData()

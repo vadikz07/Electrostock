@@ -72,6 +72,7 @@ class Toolbar:
         )
         btn_addNew.pack(**common_settings)
 
+
         btn_exit = tb.Button(
             master=container,
             text="Salir",
@@ -82,3 +83,8 @@ class Toolbar:
 
         # Metricas
         GridDisplay(par=container, popmanagerRef=self.popmanager)
+
+        #TODO: Si el contenedor img_lblframe tiene mas de 1 hijo, destruirlo, mostrar solo el ultimo.
+        #TODO: Llamar desde previewimg a una funcion aqui para postear imagenes, donde se encuentre la logica del todo anterior.
+        self.img_lblframe = tb.LabelFrame(master=container, text="Imagen")
+        self.img_lblframe.pack(**common_settings)

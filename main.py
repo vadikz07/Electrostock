@@ -49,7 +49,8 @@ popmanager.organize_by("num")
 # Widgets del navbar
 NavBarTop(fr_navbar, popmanagerRef=popmanager)
 # Toolbar(fr_left_toolbar, root, sf_info_items)
-Toolbar(fr_left_toolbar, popmanagerRef=popmanager, rootRef=root)
+tbar = Toolbar(fr_left_toolbar, popmanagerRef=popmanager, rootRef=root)
+popmanager.set_toolbar_ref(tbar)
 
 
 status_lbl = tb.Label(
