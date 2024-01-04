@@ -10,7 +10,7 @@ import io
 
 
 class PhotoImageLabel(tb.Label):
-    max_size = (220,220)
+    max_size = (180,180)
     def __init__(self, parent, local=False, **kwargs):
         if local == False:
             with urllib.request.urlopen(kwargs['image']) as u:
@@ -45,11 +45,13 @@ class PreviewWindow:
         # self.newWindow.title('Imagen')
         # self.newWindow.geometry("+%d+%d" % ((self.root.winfo_screenwidth() - 200) / 2, (self.root.winfo_screenheight() - 800) / 2))
         # self.newWindow.config(padx=20, pady=20)
-        self.maincontainer = tb.Frame(master=popmanagerRef.get_toolbar_ref().img_lblframe)
+        self.tbar_ref = popmanagerRef.get_toolbar_ref()
+        self.maincontainer = tb.Frame(master=self.tbar_ref.img_lblframe)
         self.maincontainer.pack(**self.common_options_pack)
-        #TODO: Mostrar la imagen en la parte inferior del toolbar de la ventana principal. / valor anterior = self.maincointainer
+
         self.labeltext = tb.LabelFrame(master=self.maincontainer, text=f'{self.original_data["nombre"]}: {self.original_data["modelo"]}')
         self.labeltext.pack(**self.common_options_pack)
+        self.tbar_ref.keep_one_only()
         # self.root.after(MAX_TIME_CLOSE_WINDOW, self.destroy_window)
 
     def destroy_window(self):

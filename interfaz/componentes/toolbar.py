@@ -38,17 +38,19 @@ class Toolbar:
 
         btn_findByNum_btn = tb.Button(
             master=container,
-            text='Mostrar por cajon',
-            command=lambda: popmanagerRef.visualize_by_num(int(spinbox_cajon_num.get()))
+            text="Mostrar por cajon",
+            command=lambda: popmanagerRef.visualize_by_num(
+                int(spinbox_cajon_num.get())
+            ),
         )
         # btn_findByNum_btn.pack(**common_settings)
-        
+
         spinbox_cajon_num = tb.Spinbox(
             master=container,
             from_=1,
             to=99,
         )
-        spinbox_cajon_num.insert(0,"1")
+        spinbox_cajon_num.insert(0, "1")
         # spinbox_cajon_num.pack(**common_settings)
 
         btn_export = tb.Button(master=container, text="Exportar", state="disabled")
@@ -62,7 +64,6 @@ class Toolbar:
         )
         btn_genThumb.pack(**common_settings)
 
-
         # boton para abrir nueva ventana con formulario de insercion
         btn_addNew = tb.Button(
             master=container,
@@ -71,7 +72,6 @@ class Toolbar:
             command=lambda: NewItemForm(par, popmanagerRef=popmanagerRef),
         )
         btn_addNew.pack(**common_settings)
-
 
         btn_exit = tb.Button(
             master=container,
@@ -84,7 +84,12 @@ class Toolbar:
         # Metricas
         GridDisplay(par=container, popmanagerRef=self.popmanager)
 
-        #TODO: Si el contenedor img_lblframe tiene mas de 1 hijo, destruirlo, mostrar solo el ultimo.
-        #TODO: Llamar desde previewimg a una funcion aqui para postear imagenes, donde se encuentre la logica del todo anterior.
         self.img_lblframe = tb.LabelFrame(master=container, text="Imagen")
         self.img_lblframe.pack(**common_settings)
+
+    def keep_one_only(self):
+        if len(self.img_lblframe.winfo_children()) > 1:
+            try:
+                self.img_lblframe.winfo_children()[0].destroy()
+            except:
+                print("no se ha podido borrar la imagen.")
