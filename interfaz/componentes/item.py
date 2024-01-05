@@ -55,7 +55,7 @@ class ItemShow:
             var_name = "VACIO"
             var_model = ""
             var_fabricante = ""
-            var_notas = get_container_size(var_box_num)
+            var_notas = ""
             
             
         color = 'orange' if self.warn else 'white'
@@ -63,6 +63,8 @@ class ItemShow:
         lbl_boxNum.pack(side='top')
         lbl_boxnumSize = tb.Label(master=num_frame, text=get_container_size(data_dict['localizacion']), font=("Arial", 7, "normal"))
         lbl_boxnumSize.pack(side='bottom')
+        if get_container_size(data_dict['localizacion']) == 'INPUT NO VALIDO':
+            lbl_boxnumSize.config(text=get_container_size(var_box_num))
         
         lbl_name = tb.Label(master=contents_frame, text=var_name, font=("Arial", 12, "bold"), padding=md_padd, foreground=color)
         lbl_name.grid(column=0, row=0)

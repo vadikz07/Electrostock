@@ -41,7 +41,7 @@ class NavBarTop:
 
         btn_clearSearchbar = tb.Button(
             master=navbar_frame,
-            text="X",
+            text="Borrar",
             bootstyle="danger",
             command=lambda: value_searchBar.set(""),
         )
