@@ -6,6 +6,7 @@ from logica.getDataLogic import *
 from logica.constants_data import *
 from PIL import Image, ImageTk
 import urllib.request
+from urllib import error
 import io
 
 
@@ -13,10 +14,14 @@ class PhotoImageLabel(tb.Label):
     max_size = (180,180)
     def __init__(self, parent, local=False, **kwargs):
         if local == False:
-            with urllib.request.urlopen(kwargs['image']) as u:
-                raw_data = u.read()
+            try:
+                with urllib.request.urlopen(kwargs['image']) as u:
+                    raw_data = u.read()
+                    image = Image.open(io.BytesIO(raw_data))
+            except error.HTTPError:
+                image = Image.open('data/imgs/noimg.jpg')
+                print('No se puede cargar la imagen')
             # image = Image.open(kwargs['image'])
-            image = Image.open(io.BytesIO(raw_data))
             image.thumbnail(self.max_size)
             self._image = ImageTk.PhotoImage(image)
             
@@ -49,7 +54,11 @@ class PreviewWindow:
         self.maincontainer = tb.Frame(master=self.tbar_ref.img_lblframe)
         self.maincontainer.pack(**self.common_options_pack)
 
-        self.labeltext = tb.LabelFrame(master=self.maincontainer, text=f'{self.original_data["nombre"]}: {self.original_data["modelo"]}')
+        self.output_name = f'{self.original_data["nombre"]}: {self.original_data["modelo"]}'
+        print(len(self.output_name))
+        if len(self.output_name)>=30:
+            self.output_name = f'{self.original_data["nombre"]}: {self.original_data["modelo"]}'[:30]+' ...'
+        self.labeltext = tb.LabelFrame(master=self.maincontainer, text=self.output_name)
         self.labeltext.pack(**self.common_options_pack)
         self.tbar_ref.keep_one_only()
         # self.root.after(MAX_TIME_CLOSE_WINDOW, self.destroy_window)

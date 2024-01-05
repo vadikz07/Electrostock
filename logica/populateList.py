@@ -47,7 +47,7 @@ class PopulateManager:
 
     def visualize_all(self):
         self.clear_children()
-        for data_item in self.all_items:
+        for data_item in self.all_items[::-1]:
             ItemShow(self.frame, data_item, popmanagerRef=self)
 
     def visualize_low_qty(self):
