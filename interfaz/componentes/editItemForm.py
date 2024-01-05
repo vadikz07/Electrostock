@@ -54,8 +54,6 @@ class EditItemForm:
         self.name_ent.pack(side="left", fill="x", expand=True, anchor="w")
         self.list_entry_widgets.append(self.name_ent_var)
 
-
-
         self.model_lblframe = tb.LabelFrame(master=self.main_container, text="Modelo")
         self.model_lblframe.grid(row=1, column=0, columnspan=2, sticky="ew")
         self.model_ent_var = StringVar()
@@ -88,9 +86,12 @@ class EditItemForm:
             master=self.img_lblframe,
             text="Probar imagen",
             command=lambda: (
-                PreviewWindow(par=par, urlTest=self.img_ent_var.get()).show_image()
+                PreviewWindow(
+                    par=par, popmanagerRef=popmanagerRef, urlTest=self.img_ent_var.get()
+                ).show_image()
             ),
             bootstyle="info",
+            state="disabled",
         )
         self.test_img_btn.pack(side="left", expand=False, anchor="e")
         self.list_entry_widgets.append(self.img_ent_var)

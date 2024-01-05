@@ -67,8 +67,8 @@ class NewItemForm:
         )
         self.img_ent.pack(side="left", fill="x", expand=True, anchor="w")
         self.test_img_btn = tb.Button(master=self.img_lblframe, text='Probar imagen', command=lambda:(
-                PreviewWindow(par=par,urlTest=self.img_ent_var.get()).show_image()
-            ),bootstyle='info')
+                PreviewWindow(par=par,popmanagerRef=popmanagerRef,urlTest=self.img_ent_var.get()).show_image()
+            ),bootstyle='info', state='disabled')
         self.test_img_btn.pack(side="left", expand=False, anchor="e")
         self.list_entry_widgets.append(self.img_ent_var)
 
