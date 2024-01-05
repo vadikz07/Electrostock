@@ -45,6 +45,11 @@ class NavBarTop:
             bootstyle="danger",
             command=lambda: value_searchBar.set(""),
         )
+        ttip_clearSearchBar = ToolTip(
+            btn_clearSearchbar,
+            text="Borrar texto de la busqueda",
+            bootstyle=(DANGER, INVERSE),
+        )
         btn_clearSearchbar.pack(**common_right)
 
         # btn_commitSearch = tb.Button(master=navbar_frame, text='Buscar', command=lambda: PopulateManager(sframe_ref).search_item(ent_searchBar.get(), int(precision_slider.get())))
@@ -98,5 +103,15 @@ class NavBarTop:
 
         precision_lbl = tb.Label(
             master=navbar_frame, text=f"Precision: {int(precision_slider.get())}"
+        )
+        ttip_precision_lbl = ToolTip(
+            precision_lbl,
+            text="Cuanto menor sea el valor, menos estricta sera la busqueda.",
+            bootstyle=(PRIMARY, INVERSE),
+        )
+        ttip_scale_lbl = ToolTip(
+            precision_slider,
+            text="Cuanto menor sea el valor, menos estricta sera la busqueda.",
+            bootstyle=(PRIMARY, INVERSE),
         )
         precision_lbl.pack(**common_right, padx=5)
