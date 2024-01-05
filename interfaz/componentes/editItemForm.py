@@ -84,7 +84,6 @@ class EditItemForm:
         self.img_ent_var.set(self.original_data["imagen"])
         self.img_ent = tb.Entry(master=self.img_lblframe, textvariable=self.img_ent_var)
         self.img_ent.pack(side="left", fill="x", expand=True, anchor="w")
-        # TODO: Incluir boton para hacer un preview de la imagen(para ver si funciona el enlace)
         self.test_img_btn = tb.Button(
             master=self.img_lblframe,
             text="Probar imagen",

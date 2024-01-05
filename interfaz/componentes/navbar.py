@@ -1,5 +1,7 @@
 from tkinter import StringVar
 import ttkbootstrap as tb
+from ttkbootstrap.tooltip import ToolTip
+from ttkbootstrap.icons import Icon
 from ttkbootstrap.constants import *
 from logica.showEmptyContainers import show_empty_containers
 from logica.populateList import PopulateManager
@@ -50,17 +52,31 @@ class NavBarTop:
             master=navbar_frame,
             text="Buscar",
             command=lambda: popmanagerRef.search_item(
-                ent_searchBar.get(), resolution=int(precision_slider.get()),search_all_fields=btn_search_all_bool_var.get()
+                ent_searchBar.get(),
+                resolution=int(precision_slider.get()),
+                search_all_fields=btn_search_all_bool_var.get(),
             ),
         )
-        #TODO: Incluir check radio para buscar tambien en las notas
         btn_commitSearch.pack(**common_right)
 
         btn_search_all_bool_var = IntVar()
-        btn_search_all_bool_var.set(0)
-        btn_radio_search_all_fields = tb.Checkbutton(master=navbar_frame, text='', variable=btn_search_all_bool_var, onvalue=1, offvalue=0)
+        btn_search_all_bool_var.set(1)
+        # TODO: Incluir tooltip al pasar el raton por encima del checkbutton
+
+        btn_radio_search_all_fields = tb.Checkbutton(
+            master=navbar_frame,
+            text="",
+            variable=btn_search_all_bool_var,
+            onvalue=1,
+            offvalue=0,
+        )
+        ttip_search_all = ToolTip(
+            btn_radio_search_all_fields,
+            text="Si esta activada, buscara en todos los campos disponibles (notas, fabricante, etc...)",
+            bootstyle=(PRIMARY, INVERSE),
+        )
         btn_radio_search_all_fields.pack(**common_right)
-        
+
         value_searchBar = StringVar()
         ent_searchBar = tb.Entry(master=navbar_frame, textvariable=value_searchBar)
         ent_searchBar.pack(**common_right)
@@ -80,5 +96,7 @@ class NavBarTop:
         )
         precision_slider.pack(**common_right, padx=10)
 
-        precision_lbl = tb.Label(master=navbar_frame, text="Precision")
+        precision_lbl = tb.Label(
+            master=navbar_frame, text=f"Precision: {int(precision_slider.get())}"
+        )
         precision_lbl.pack(**common_right, padx=5)

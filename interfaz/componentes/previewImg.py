@@ -55,9 +55,9 @@ class PreviewWindow:
         self.maincontainer.pack(**self.common_options_pack)
 
         self.output_name = f'{self.original_data["nombre"]}: {self.original_data["modelo"]}'
-        print(len(self.output_name))
         if len(self.output_name)>=30:
             self.output_name = f'{self.original_data["nombre"]}: {self.original_data["modelo"]}'[:30]+' ...'
+            
         self.labeltext = tb.LabelFrame(master=self.maincontainer, text=self.output_name)
         self.labeltext.pack(**self.common_options_pack)
         self.tbar_ref.keep_one_only()

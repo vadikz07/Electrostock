@@ -32,7 +32,6 @@ class GridDisplay:
         self._refresh_grid()
 
     def _refresh_grid(self):
-        print('Refrescando grid')
         occupied, empty = get_list_status_containers(data_list=self.popmanagerRef.all_items)
         self.lbls_placed = 1
         while self.lbls_placed <= 98:

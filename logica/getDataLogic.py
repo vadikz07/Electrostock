@@ -68,7 +68,6 @@ def getData() -> list:
 def saveData(datadict_to_insert: dict, popmanagerRef) -> bool:
     # comprobar si existe el fichero json, si esta, leerlo
     popmanagerRef.all_items.append(datadict_to_insert)
-    #TODO: hacer que popmanager refresque griddisplay
     try:
         with open(filepath_json, "r") as file:
             contents = json.load(file)
