@@ -60,7 +60,9 @@ class ItemShow:
             
         color = 'orange' if self.warn else 'white'
         lbl_boxNum = tb.Label(master=num_frame, text=var_box_num, font=("Arial", 24, "bold"), padding=md_padd, foreground=color)
-        lbl_boxNum.pack(side='left')
+        lbl_boxNum.pack(side='top')
+        lbl_boxnumSize = tb.Label(master=num_frame, text=get_container_size(data_dict['localizacion']), font=("Arial", 7, "normal"))
+        lbl_boxnumSize.pack(side='bottom')
         
         lbl_name = tb.Label(master=contents_frame, text=var_name, font=("Arial", 12, "bold"), padding=md_padd, foreground=color)
         lbl_name.grid(column=0, row=0)
