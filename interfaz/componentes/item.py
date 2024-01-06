@@ -5,6 +5,7 @@ from interfaz.componentes.editbar import EditBar
 from logica.getDataLogic import get_container_size
 from logica.BrowserLogic import open_dsheet_url
 from logica.constants_data import *
+from datetime import datetime
 
 """
 data_arr ejemplo de estructura:
@@ -102,8 +103,13 @@ class ItemShow:
             amt_fstring = f'Cantidad: {data_dict["cantidad"]}'
             lbl_cant = tb.Label(master=additional_frame, text=amt_fstring, font=("Arial", 12, "bold"), padding=md_padd, foreground=color)
             lbl_cant.pack(side='left', anchor='center')
-            
-            lbl_date = tb.Label(master=additional_frame, text=data_dict['fechaInsercion'])
+            try:
+                lbl_date = tb.Label(master=additional_frame, text=data_dict['fechaInsercion'])
+            except KeyError:
+                print(f'Fecha insercion no actualizada.')
+                datetimenow = datetime.now()
+                self.act_date = datetimenow.strftime('%d/%m/%Y')
+                lbl_date = tb.Label(master=additional_frame, text=self.act_date)
             lbl_date.pack(side='right', anchor='e')
             
             
