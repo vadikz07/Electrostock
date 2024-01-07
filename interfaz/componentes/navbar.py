@@ -5,6 +5,7 @@ from ttkbootstrap.icons import Icon
 from ttkbootstrap.constants import *
 from logica.showEmptyContainers import show_empty_containers
 from logica.populateList import PopulateManager
+from logica.imgchecker import ImgCheckerGUI
 from tkinter import BooleanVar, IntVar
 
 
@@ -38,6 +39,14 @@ class NavBarTop:
             command=lambda: popmanagerRef.visualize_low_qty(),
         )
         btn_showFew.pack(**common_left)
+        
+        btn_check_img = tb.Button(
+            master=navbar_frame,
+            text='Comprobar imagenes',
+            bootstyle='warning',
+            command=lambda: ImgCheckerGUI(par=navbar_frame, arr_of_items=popmanagerRef.all_items)
+        )
+        btn_check_img.pack(**common_left)
 
         btn_clearSearchbar = tb.Button(
             master=navbar_frame,
