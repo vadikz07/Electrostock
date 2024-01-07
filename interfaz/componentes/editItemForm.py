@@ -2,6 +2,7 @@ from tkinter import *
 import ttkbootstrap as tb
 from logica.getDataLogic import modify_item, validateData
 from interfaz.componentes.previewImg import PreviewWindow
+from interfaz.componentes.previewImgstandalone import PreviewWindowSA
 
 
 class EditItemForm:
@@ -86,12 +87,11 @@ class EditItemForm:
             master=self.img_lblframe,
             text="Probar imagen",
             command=lambda: (
-                PreviewWindow(
+                PreviewWindowSA(
                     par=par, popmanagerRef=popmanagerRef, urlTest=self.img_ent_var.get()
                 ).show_image()
             ),
-            bootstyle="info",
-            state="disabled",
+            bootstyle="info"
         )
         self.test_img_btn.pack(side="left", expand=False, anchor="e")
         self.list_entry_widgets.append(self.img_ent_var)
