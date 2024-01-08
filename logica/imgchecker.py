@@ -29,10 +29,10 @@ class SingleReport:
         
 
 class ImgCheckerGUI:
-    items_name_img = []
     #Estructura del tuple , 0-uuid, 1-nombre, 2-imagen
     
     def __init__(self, par, arr_of_items=[],popmanagerRef=None) -> None:
+        self.items_name_img = []
         self.root = par
         self.imgs_problems = []
         self.arr_of_items = arr_of_items
