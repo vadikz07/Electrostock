@@ -11,6 +11,7 @@ from tkinter import BooleanVar, IntVar
 
 class NavBarTop:
     def __init__(self, par, popmanagerRef: PopulateManager) -> None:
+        self.popmanagerRef = popmanagerRef
         common_left = {"side": "left", "padx": 4}
         common_right = {"side": "right", "anchor": "e"}
 
@@ -39,12 +40,20 @@ class NavBarTop:
             command=lambda: popmanagerRef.visualize_low_qty(),
         )
         btn_showFew.pack(**common_left)
-        
+
         btn_check_img = tb.Button(
             master=navbar_frame,
-            text='Comprobar imagenes',
-            bootstyle='warning',
-            command=lambda: ImgCheckerGUI(par=navbar_frame, arr_of_items=popmanagerRef.all_items)
+            text="Comprobar imagenes",
+            bootstyle="primary",
+            command=lambda: ImgCheckerGUI(
+                par=navbar_frame, arr_of_items=popmanagerRef.all_items,popmanagerRef=popmanagerRef
+            ),
+        )
+
+        ttip_btn_check_img = ToolTip(
+            btn_check_img,
+            text="Comprueba si las imagenes de la base de datos estan disponibles, puede tardar un poco en mostrar el resultado.",
+            bootstyle=(PRIMARY, INVERSE),
         )
         btn_check_img.pack(**common_left)
 

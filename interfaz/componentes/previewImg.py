@@ -53,7 +53,6 @@ class PreviewWindow:
         self.tbar_ref = popmanagerRef.get_toolbar_ref()
         self.maincontainer = tb.Frame(master=self.tbar_ref.img_lblframe)
         self.maincontainer.pack(**self.common_options_pack)
-        #TODO: Arreglar botones de vista previa, hay un error al crear este objeto desde New/Edit forms.
         self.output_name = f'{self.original_data["nombre"]}: {self.original_data["modelo"]}'
         if len(self.output_name)>=25:
             self.output_name = f'{self.original_data["nombre"]}: {self.original_data["modelo"]}'[:25]+' ...'

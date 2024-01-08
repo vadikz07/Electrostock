@@ -31,7 +31,6 @@ class PhotoImageLabel(tb.Label):
 class PreviewWindowSA:
     x_padd = 5
     common_options_pack = {'side':'top', 'expand':True,'fill':'both','padx':5, 'pady':10}
-        #TODO: Cambiar el destino de la imagen a la parte inferior del toolbar izquierdo.
     def __init__(self, par, uuid_to_modify=None, popmanagerRef=None, urlTest:str='') -> None:
         self.uuid_to_modify = uuid_to_modify
         self.popmanager = popmanagerRef
