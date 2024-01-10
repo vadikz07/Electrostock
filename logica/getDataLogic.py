@@ -113,10 +113,11 @@ def validateData(datadict: dict):
         b_cantidad_ok = 1 <= int(datadict["cantidad"]) <= 999
     except ValueError:
         b_cantidad_ok = False
-    try:
-        b_cantidadAviso_ok = 0 <= int(datadict["cantidadAviso"]) <= 999
-    except ValueError:
-        b_cantidadAviso_ok = False
+    # try:
+    #     b_cantidadAviso_ok = 0 <= int(datadict["cantidadAviso"]) <= 999
+    # except ValueError:
+    #     b_cantidadAviso_ok = True
+    b_cantidadAviso_ok = True
 
     if datadict["datasheet"] == "":
         b_datasheet_ok = True

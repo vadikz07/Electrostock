@@ -52,6 +52,10 @@ class ImgCheckerGUI:
         self.results_lblFrame = tb.LabelFrame(master=mainFrame, text="Resultados")
         self.results_lblFrame.pack(**common_options)
         
+        if len(self.get_imgs_problems()) == 0:
+            result = tb.Label(master=self.results_lblFrame, text='Todas las imagenes funcionan correctamente.\nPuedes cerrar esta ventana.')
+            result.pack(padx=20,pady=20)
+        
         for tup_item in self.get_imgs_problems():
             # print(tup_item)
             self.generate_single_gui_report(tup_item)

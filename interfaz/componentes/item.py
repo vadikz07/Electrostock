@@ -103,6 +103,10 @@ class ItemShow:
             amt_fstring = f'Cantidad: {data_dict["cantidad"]}'
             lbl_cant = tb.Label(master=additional_frame, text=amt_fstring, font=("Arial", 12, "bold"), padding=md_padd, foreground=color)
             lbl_cant.pack(side='left', anchor='center')
+            
+            # amtwarn_fstring = f'Avisar a menos de: {data_dict["cantidadAviso"]}'
+            # lbl_cantwarn = tb.Label(master=additional_frame, text=amtwarn_fstring, font=("Arial", 12, "bold"), padding=md_padd, foreground=color)
+            # lbl_cantwarn.pack(side='right', anchor='e')
             try:
                 lbl_date = tb.Label(master=additional_frame, text=data_dict['fechaInsercion'])
             except KeyError:

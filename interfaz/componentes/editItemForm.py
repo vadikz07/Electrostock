@@ -127,19 +127,19 @@ class EditItemForm:
         # self.list_entry_widgets.append(self.cant_max_entry_var)
 
         # Tercer hijo de cant frame para aviso
-        self.cant_warn_lblframe = tb.LabelFrame(
-            master=self.cant_frame, text="Avisar", bootstyle="warning"
-        )
-        self.cant_warn_lblframe.pack(
-            side="left", padx=(5, 0), anchor="e", fill="x", expand=True
-        )
+        # self.cant_warn_lblframe = tb.LabelFrame(
+        #     master=self.cant_frame, text="Avisar", bootstyle="warning"
+        # )
+        # self.cant_warn_lblframe.pack(
+        #     side="left", padx=(5, 0), anchor="e", fill="x", expand=True
+        # )
         ##Entry para el aviso
-        self.cant_warn_entry_var = tb.Spinbox(
-            master=self.cant_warn_lblframe, from_=1, to=200
-        )
-        self.cant_warn_entry_var.set(self.original_data["cantidadAviso"])
-        self.cant_warn_entry_var.pack(side="top", fill="x")
-        self.list_entry_widgets.append(self.cant_warn_entry_var)
+        # self.cant_warn_entry_var = tb.Spinbox(
+        #     master=self.cant_warn_lblframe, from_=1, to=200
+        # )
+        # self.cant_warn_entry_var.set(self.original_data["cantidadAviso"])
+        # self.cant_warn_entry_var.pack(side="top", fill="x")
+        # self.list_entry_widgets.append(self.cant_warn_entry_var)
 
         # todo: continuar formulario con los datos de itemlist
         self.dsheet_lblframe = tb.LabelFrame(
@@ -182,12 +182,13 @@ class EditItemForm:
     def collect_data(self) -> dict:
         print(f"Ejecutando collect data")
         data_dict = {}
+        data_dict['uuid'] = self.uuid_to_modify
         data_dict["nombre"] = self.name_ent_var.get()
         data_dict["modelo"] = self.model_ent_var.get()
         data_dict["imagen"] = self.img_ent_var.get()
         data_dict["fabricante"] = self.maker_ent_var.get()
         data_dict["cantidad"] = self.cant_act_entry_var.get()
-        data_dict["cantidadAviso"] = self.cant_warn_entry_var.get()
+        # data_dict["cantidadAviso"] = self.cant_warn_entry_var.get()
         # data_dict["cantidadMaxima"] = self.cant_max_entry_var.get()
         data_dict["datasheet"] = self.dsheet_ent_var.get()
         data_dict["notas"] = self.notes_text.get("1.0", "end-1c")
