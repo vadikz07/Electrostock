@@ -92,7 +92,10 @@ class ItemShow:
         #CONTROL FRAME⬇️
         if not self.isEmpty:   #Si tiene contenidos
             if data_dict['datasheet'] != '':
-                btn_dsheet = tb.Button(master=additional_frame, text=data_dict['datasheet'], bootstyle='success')
+                dsheet_shown_url = data_dict['datasheet']
+                if len(data_dict['datasheet']) >= 50:
+                    dsheet_shown_url = f'... {data_dict['datasheet'][-50::]}'
+                btn_dsheet = tb.Button(master=additional_frame, text=dsheet_shown_url, bootstyle='success')
                 if self.isEmpty:
                     btn_dsheet.config(state='disabled')
             else:
